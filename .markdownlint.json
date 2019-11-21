@@ -1,0 +1,16 @@
+{
+  "default": true,
+  "first-heading-h1": false,
+  "first-line-h1": false,
+  "line-length": false,
+  "no-trailing-punctuation": false,
+  "no-inline-html": false,
+  "zno-inline-html": {
+    "allowed_elements": [
+      "a",
+      "div",
+      "img",
+      "svg"
+    ]
+  }
+}

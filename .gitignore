@@ -1,0 +1,10 @@
+## Ignore files
+*.testz
+
+# Production Files
+dist/
+
+# Others
+node_modules/
+yarn-error.log
+Thumbs.db

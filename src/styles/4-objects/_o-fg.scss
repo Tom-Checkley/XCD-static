@@ -1,0 +1,56 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_FG FlexGrid System
+////
+
+// flex: 30 0 0px;// 0px for IE
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+/// BASE
+/// ----------------------------------------------------
+.o-fg {
+}
+
+.o-fg__head {
+}
+
+.o-fg__actions {
+    // display: flex;
+    // justify-content: flex-end;
+    // align-items: flex-start;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// .o-fg--lg-md-md-md {
+//     > *:first-child {
+//         flex: 30 0 0px;
+//     }
+
+//     > *:nth-child(n + 2) {
+//         flex: 20 0 0px;
+//     }
+
+//     > *:last-child {
+//         flex: 15 0 0px;
+//     }
+// }
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

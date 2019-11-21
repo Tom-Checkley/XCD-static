@@ -1,0 +1,28 @@
+<div  class="g {{ ColClass }}" >
+
+    <div id="card{{$index}}" class="gc" data-ng-repeat="card in Cards track by $index" style="order: {{ $index }}">
+        <div class="c-card">
+            <div class="c-card__img">
+                <img src="" alt="{{card.title}}">
+            </div>
+            <div class="c-card__body">
+                <a href="#" class="c-card__link" data-ng-click="onClick($event, $index, card)">
+                    <h3 class="c-card__title">{{card.title}}</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="cardAccordionPanel" data-ng-show="Selected" class="gc gc__sm--1 gc__md--1 gc__lg--1 c-accordion__panel c-card__article-holder" data-ng-style="{order: 
+        Order }" tabindex="-1">
+        <div>
+            <button data-ng-click="close()"><span><span role="img" aria-hidden="true">X</span><span class="vh">Close</span></span></button>
+        </div>
+        <article class="c-card__article">
+            <h2 class="article__header">{{ Selected.title }}</h2>
+            <div class="article__body">{{ Selected.body }}</div>
+            <a href="#">where ever</a>
+        </article>
+    </div>
+
+</div>

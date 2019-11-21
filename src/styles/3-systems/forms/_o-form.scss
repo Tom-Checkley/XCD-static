@@ -1,0 +1,396 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_FORM
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+/// BASE
+/// ----------------------------------------------------
+
+.o-form {
+}
+
+.o-form__section {
+    background-image: linear-gradient(180deg, $COLOR-GreyLightest, $COLOR-White);
+    padding: 25px;
+    border: 1px solid $COLOR-GreyLight;
+
+    + .o-form__section {
+        @include margin-top(25);
+    }
+}
+
+.o-form__row {
+    display: flex;
+    flex-flow: row wrap;
+    // max-width: 100%;
+    @include padding(5);
+    @include margin-top(20);
+    @include margin-left(-25);
+
+    > * {
+        flex: 1 0 0px;
+        @include margin-left(25);
+    }
+
+    &:first-child {
+        @include margin-top(0);
+    }
+}
+
+// Each control has margin-left (for spacing), the entire o-form__row--grid has negative margin-left so the inputs will appear to equally stretch 50% the entire width. If it had margin-right on each child it won't work with a negative margin-right on the container (because it's flex).
+.o-form__row--grid {
+    display: flex;
+    flex-flow: row wrap;
+
+    > * {
+        flex: 1 1 400px;
+        @include margin-bottom(20);
+    }
+
+    &:not(:last-child) {
+        // Add a default margin, sibling rows have vertical gap
+        @include margin-bottom(20);
+    }
+}
+
+.o-form__row--inline {
+    display: flex;
+    flex-flow: row wrap;
+
+    > * {
+        flex: 1 1 280px;
+    }
+}
+
+.o-form__row--lg-sm {
+    > *:nth-child(1) {
+        // flex: 1 0 0px;
+    }
+
+    > *:nth-child(2) {
+        flex: 0 0 auto;
+    }
+}
+
+.o-form__row--expand {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    width: 100%;
+    @include margin-top(0);
+
+    > * {
+        margin-left: 0;
+    }
+}
+
+.o-form__row--actions {
+    flex: 1 0 0px;
+
+    .o-form__control {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.o-form__row--login {
+    > :first-child {
+        flex: 0 0 auto;
+    }
+
+    > :last-child {
+        align-items: center;
+    }
+}
+
+.o-form__row--1-2 {
+        justify-content: space-between;
+        max-width: 100%;
+
+    > * {
+        flex: 1 0 0px;
+    }
+}
+
+.o-form__control {
+}
+
+.o-form__label {
+
+}
+
+.o-form__alert:not(:empty) {
+    flex: 0 0 100%;
+    border-radius: 3px 3px 0 0;
+    background-color: fade-out($COLOR-Error, 0.97);
+    color: $COLOR-Error;
+    @include padding(8);
+
+    .o-form__alert-content {
+        // @include margin-left($O_FORM-EDIT-Width + 25px);
+        display: flex;
+        align-items: center;
+    }
+}
+
+.o-form__alert-content {
+    margin-right: auto;
+    text-align: left;
+}
+
+// A11y - best practice is an error message below the input. In case the user is zoomed in (and we take user to focus the input field)
+.o-form__alert-inline {
+    // If alert styles are displaying but there's no error message, it's probably whitespace between the 'o-form__alert'
+    &:not(:empty) {
+        display: flex;
+        align-items: center;
+        @include padding(8);
+        border-radius: 3px 3px 0 0;
+        background-image: linear-gradient(90deg, fade-out($COLOR-Error, 0.97) 75%, fade-out($COLOR-Error, 1));
+        color: $COLOR-Error;
+    }
+
+    .c-icon {
+        flex: 0 0 30px;
+        padding-left: 6px;
+        @include font-size(20);
+    }
+
+    .field-validation-error {
+    }
+
+    .o-form__alert-content {
+        margin-right: auto;
+        text-align: left;
+        flex: 0 1 auto;
+    }
+}
+
+.o-form__alert-content {
+
+}
+
+.o-form__error-summary {
+    @include margin-bottom(20);
+}
+
+// Container for single or groups of inputs
+.o-form__input {
+}
+
+.o-form__actions {
+    @include margin-y(20);
+    @include padding(0);
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+.o-form__input--group {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+    .c-input {
+        display: flex;
+        align-items: center;
+        @include margin-left(20);
+
+        &:first-child {
+            @include margin-left(0);
+        }
+    }
+
+    .c-input__field {
+        flex: 1 0 0px;
+    }
+
+    .c-input__label {
+        flex: 0 0 auto;
+        @include margin-left(10);
+    }
+
+    &.o-form__input--single {
+        .c-input__label {
+            // flex: 1 1 0px;
+            flex: 1 1 auto;
+            @include wrap-words-notonletter;
+        }
+    }
+
+    .c-input__label--flex {
+        // flex: 1 0 0px;
+        flex: 1 0 auto;
+    }
+
+    .c-icon {
+        flex: 0 0 auto;
+    }
+}
+
+// Makes each input have a border, but the label is next to it (inlinegroup)
+.o-form__input--inlinegroup {
+    display: flex;
+    align-items: center;
+}
+
+// Rows of input+label, aligned left (to not be full width)
+.o-form__input--rowgroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .c-inputwrap {
+        @include margin-bottom(5);
+    }
+}
+
+.o-form__input--rtl {
+    .c-input__label {
+        order: -1;
+        @include margin-x(0, 10);
+    }
+}
+
+.o-form__input--vertical {
+    .c-input {
+        display: block;
+        @include margin-bottom(10);
+    }
+}
+
+.o-form__input--gridcell {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    grid-gap: 5px;
+
+    > *:nth-child(4) {
+        grid-column: 1 / -1;
+    }
+}
+
+.o-form__input--withbutton {
+    display: flex;
+
+    .c-input {
+        flex: 1 0 0px;
+    }
+
+    .c-button {
+        @include margin-left(25);
+    }
+
+    .c-button--inline {
+        @include margin-left(0);
+    }
+}
+
+$O_FORM-EDIT-Width: 220px;
+
+.o-form--edit {
+    .o-form__control {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .o-form__label {
+        flex: 0 0 $O_FORM-EDIT-Width;
+        max-width: $O_FORM-EDIT-Width;
+        @include wrap-words-notonletter;
+        @include margin-right(25);
+    }
+
+    .o-form__input {
+        flex: 1 1 auto;
+    }
+
+    .o-form__input--vertical {
+        flex: 1 0 0px;
+        flex-flow: row wrap;
+
+        & > * {
+            flex: 1 0 100%;
+        }
+    }
+
+    .c-input--textarea {
+        textarea {
+            min-height: 120px;
+        }
+    }
+
+    .o-form__alert:not(:empty) {
+        flex: 0 0 100%;
+
+        .o-form__alert-content {
+            @include margin-left($O_FORM-EDIT-Width + 25px);
+            display: flex;
+            align-items: center;
+            @include padding(8);
+            border-radius: 3px 3px 0 0;
+            background-color: fade-out($COLOR-Error, 0.97);
+            color: $COLOR-Error;
+        }
+    }
+
+    .o-form__alert-content {
+        margin-right: auto;
+        text-align: left;
+    }
+}
+
+.o-form--admin {
+    // max-width: 600px;
+    // @include margin(0, auto, 50);
+}
+
+.o-form--2col {
+    .c-card__body {
+        columns: 2;
+    }
+
+    .o-form__row:first-of-type {
+        @include margin-top(0);
+    }
+
+    // Columns go a little weird, so if it's an odd number of items,
+    // pad out the odd last item to balance the view
+    .o-form__row:last-of-type:nth-child(odd) {
+        @include margin-bottom(60);
+    }
+}
+
+// .o-form--3col {
+//     .c-card__body {
+//         columns: 3;
+//     }
+
+//     .o-form__row:first-of-type {
+//         @include margin-top(0);
+//     }
+
+//     // Columns go a little weird if (total / 3 != whole number),
+//     // Can't realistically pad out possible last few items to balance the view
+//     .o-form__row:last-of-type:nth-child(odd) {
+//         @include margin-bottom(60);
+//     }
+// }
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

@@ -1,0 +1,97 @@
+/// <reference path="../main.scss" />
+
+////
+/// O-HEADER
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$O_H-Height--Mob:       $NAV-Height--Mob;
+$O_H-Height--Tab:       $NAV-Height--Tab;
+$O_H-Height--Full:      $NAV-Height--FullScreen;
+
+/// BASE
+/// ----------------------------------------------------
+
+.o-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.o-header__nav-wrapper {
+    position: relative;
+    z-index: 200;
+    width: 100%;
+    display: flex;
+
+    // center the nav but allow it to look solid on the left
+    &::before,
+    &::after {
+        content: '';
+        flex: 1 1 auto;
+    }
+
+    &::before {
+        margin-right: -1px;
+        background-color: $COLOR-White;
+        height: $O_H-Height--Mob;
+
+        @include media(">menu-large") {
+            height: $O_H-Height--Tab;
+        }
+        @include media(">menu-xlarge") {
+            height: $O_H-Height--Full;
+        }
+    }
+}
+
+.o-header__nav {
+    width: 100%;
+    max-width: rem($GRID-MaxWidth);
+    flex-shrink: 0;
+}
+
+.o-header__body {
+    @include media(screen, ">larger") {
+        max-width: 50%;
+    }
+}
+
+.o-header__actions {
+    @include margin-top(40);
+
+    @include media(screen, "<=large") {
+        .c-button + .c-button {
+            @include margin-top(40);
+        }
+    }
+
+    @include media(screen, ">large") {
+        .c-button + .c-button {
+            @include margin-left(40);
+        }
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+.o-header--full {
+    min-height: 100vh;
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

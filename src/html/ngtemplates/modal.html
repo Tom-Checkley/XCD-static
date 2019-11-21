@@ -1,0 +1,42 @@
+
+<div class="c-modal__mask" ng-if="Config.Mask" ng-click="maskClick()"></div>
+<div class="c-modal__body">
+    <!-- tabindex allows modal to have focus (programmatic but can't be tabbed to) so it can be closed with Esc key press -->
+    <div class="c-modal__popup" ng-keyup="keyPress($event)" tabindex="-1" data-ng-class="{ 'modal--landscape' : Config.LandscapeMode }" role="dialog" aria-describedby="modalTitle">
+    
+        <div class="c-modal__content">
+            <div class="c-modal__actions">
+                <div class="c-modal__dragger" ng-show="Config.Draggable"></div>
+
+                <button class="c-modal__close" ng-if="Config.CloseButton" ng-click="close()">
+                    <svg class="c-icon c-icon--close" aria-hidden="true">
+                        <use xlink:href="/assets/icons/symbols.svg#icon--cross"></use>
+                    </svg>
+                    <span class="vh">Close Modal</span>
+                </button>
+            </div>
+
+            <div ng-if="Config.TemplateUrl" ng-include="Config.TemplateUrl"></div>
+
+            <div ng-if="!Config.TemplateUrl">
+                <p><strong>No TemplateUrl has been set.</strong></p>
+                <p>The Modal service accepts the following parameter as an argument on create(args):</p>
+                <ul>
+                    <li>
+                        <strong>config</strong> - An object that can contain the following values:
+                        <ul>
+                            <li><strong>Mask</strong> - <em>defaults: true</em> - whether to cover the screen with a mask</li>
+                            <li><strong>CloseOnMaskClick</strong> - <em>defaults: true</em> - whether to close the modal when the mask is clicked on</li>
+                            <li><strong>CloseButton</strong> - <em>defaults: true</em> - whether to display a close button</li>
+                            <li><strong>TemplateUrl</strong> - <em>defaults: undefined</em> - URL pointing to a html file that will be rendered inside this modal</li>
+                            <li><strong>Draggable</strong> - <em>defaults: true</em> - whether the modal should be draggable</li>
+                            <li><strong>Escapable</strong> - <em>defaults: true</em> - whether the Escape key should close the modal</li>
+                        </ul>
+                    </li>
+                    <li><strong>model</strong> - This represents the model that will be passed in to render the TemplateUrl specified above</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

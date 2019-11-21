@@ -1,0 +1,214 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_TABLE
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$C_TABLE-BgColour:                 $COLOR-White;
+
+$C_TABLE-Header-BgColour:          $COLOR-GreyLighter;
+$C_TABLE-Header-BorderColour:      lighten($C_TABLE-Header-BgColour, 20%);
+$C_TABLE-Header-Colour:            contrast-threshold($C_TABLE-Header-BgColour, 4.5, $COLOR-Base, $COLOR-White);
+
+$C_TABLE-Body-BgColour:            lighten($C_TABLE-Header-BgColour, 10%);
+$C_TABLE-Body-BgColour-Even:       lighten($C_TABLE-Header-BgColour, 15%);
+$C_TABLE-Body-BorderColour:        darken($C_TABLE-Body-BgColour, 10%);
+$C_TABLE-Body-Colour:              contrast-threshold($C_TABLE-Body-BgColour, 4.5, $COLOR-Base, $COLOR-White);
+
+$C_TABLE-BorderColour:             $COLOR-GreyLighter;
+$C_TABLE-Note-Colour:              $COLOR-Pink;
+
+$C_TABLE-RowBgColor-Odd:           $COLOR-GreyLightest;
+$C_TABLE-RowColor-Odd:             contrast-threshold($C_TABLE-RowBgColor-Odd, 4.5, $COLOR-Base, $COLOR-White);
+$C_TABLE-RowBgColor-Even:          $COLOR-White;
+$C_TABLE-RowColor-Even:            contrast-threshold($C_TABLE-RowBgColor-Even, 4.5, $COLOR-Base, $COLOR-White);
+
+/// BASE
+/// ----------------------------------------------------
+
+// Table {} element can not have display:flex/display:block
+// has to be display:table; (default value, as set by the browser)
+// Otherwise will cause accessibility issues (especially screenreader).
+
+// STYLES FOR A STANDARD TABLE ELEMENT
+// ----------------------------------------------------
+
+// SEMANTIC TABLE HTML
+// @url https://inclusive-components.design/data-tables/
+// ----------------------------------------------------
+
+/*
+    // Use JS to add tabindex="0" and <small> in the caption, if table wider than container
+    // Scope values should be defined what what you're looking up, eg, tshirt size (top row) by chest/waist (1st col)
+
+    <div class="tableContainer" tabindex="0" role="group" aria-labelledby="uniqueNum">
+        <table>
+            <caption id="uniqueNum">
+                Shirts Sizes
+                <div><small>(scroll to see more)</small></div>
+            </caption>
+            <tbody>
+                <tr>
+                    <th scope="row">Row Heading</th>
+                    <th scope="col">Value</td>
+                    <th scope="col">Value</td>
+                    <th scope="col">Value</td>
+                </tr>
+                <tr>
+                    <th scope="row">Row Heading</th>
+                    <td>Value</td>
+                    <td>Value</td>
+                    <td>Value</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+*/
+
+.o-table-container {
+    overflow-x: auto;
+    @include margin-bottom($TYPE-LineHeight);
+}
+
+table {
+    background-color: $C_TABLE-BgColour;
+    border: 1px solid $C_TABLE-BorderColour;
+    font-weight: normal;
+}
+
+caption {
+    text-align: left;
+}
+
+tr {
+    &:nth-child(odd) {
+        color: $C_TABLE-RowColor-Odd;
+        background-color: $C_TABLE-RowBgColor-Odd;
+    }
+
+    &:nth-child(even) {
+        color: $C_TABLE-RowColor-Even;
+        background-color: $C_TABLE-RowBgColor-Even;
+    }
+}
+
+thead tr:first-child th {
+    background-color: $C_TABLE-Header-BgColour;
+    color: $C_TABLE-Header-Colour;
+    border: 1px solid $C_TABLE-Header-BorderColour;
+    border-width: 0 1px;
+}
+
+thead {
+    th {
+        font-weight: bolder;
+    }
+}
+
+tbody {
+    th {
+        background-color: $C_TABLE-Body-BgColour;
+        color: $C_TABLE-Body-Colour;
+        border: 1px solid $C_TABLE-Body-BorderColour;
+        border-width: 0 1px;
+        font-weight: bolder;
+    }
+
+    tr:nth-child(even) th {
+        background-color: $C_TABLE-Body-BgColour-Even;
+    }
+}
+
+th {
+    border: 1px solid $C_TABLE-BorderColour;
+    border-width: 0 1px;
+    font-weight: normal;
+    @include padding($TYPE-LineHeight/2, $TYPE-LineHeight);
+}
+
+td {
+    border: 1px solid $C_TABLE-BorderColour;
+    border-width: 0 1px;
+    font-weight: normal;
+    text-align: center;
+    @include padding($TYPE-LineHeight/2, $TYPE-LineHeight);
+}
+
+tr > th {
+    &:first-child {
+        // white-space: nowrap;
+        text-align: left;
+    }
+}
+
+.c-table {
+    width: 100%;
+
+    .c-table__col1 {
+        width: 160px;
+    }
+
+    .c-table__col2 {
+        width: 180px;//calc(100% - 900px);
+    }
+
+    .c-table__col3 {
+        width: 240px;
+    }
+
+    .c-table__col4 {
+        width: 160px;
+    }
+
+    .c-table__col5 {
+        width: 160px;
+    }
+
+    .c-table__col6 {
+        width: 160px;
+    }
+}
+
+.o-lists-container {
+    picture {
+        max-width: 250px;
+        @include margin(0, auto, $TYPE-LineHeight);
+    }
+
+    div {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@include media(screen, "<=medium") {
+    .o-table-container {
+        display: none;
+    }
+}
+
+@include media(screen, ">medium") {
+    .o-lists-container {
+        display: none;
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

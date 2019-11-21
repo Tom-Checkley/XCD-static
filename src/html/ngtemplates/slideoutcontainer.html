@@ -1,0 +1,13 @@
+<div class="c-slideOutCard c-slideOutCard--{{currentCardClass}}" tabindex="-1">
+    <div data-ng-if="activeCard.config.mask">
+        <div ng-if="activeCard" 
+            data-ng-click="removeCurrent()"
+            class="c-slideOutCard__mask {{activeCard.class}}">
+        </div>
+    </div>
+    <card data-model="activeCard.model"
+        data-config="activeCard.config"
+        class="c-slideOutCard__card {{activeCard.class}}"
+        data-ng-if="activeCard">
+    </card>
+</div>

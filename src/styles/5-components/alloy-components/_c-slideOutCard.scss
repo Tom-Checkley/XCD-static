@@ -1,0 +1,99 @@
+/// <reference path="../main.scss" />
+
+////
+/// C-SLIDEOUTCARD
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$SOC-Transition:    all 0.6s ease-in-out;
+$SOC-Right:         100%;
+$SOC-Padding:       $TYPE-LineHeight;
+$SOC-MaskZ:         $Z-INDEX-Level7;
+$SOC-CardZ:         $Z-INDEX-Level8;
+$SOC-Card-BgColor:  $COLOR-White;
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-slideOutCard {
+    //
+}
+
+.c-slideOutCard__card {
+    will-change: transform;
+    width: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX($SOC-Right);
+    transition: $SOC-Transition;
+    z-index: $SOC-CardZ;
+    background-color: $SOC-Card-BgColor;
+
+    &.active {
+        transform: translateX(0);
+    }
+}
+
+.c-slideOutCard__card.ng-enter.ng-enter-active,
+.c-slideOutCard__card.ng-leave {
+    transition: $SOC-Transition;
+    transform: translateX(0);
+}
+
+.c-slideOutCard__card.ng-enter,
+.c-slideOutCard__card.ng-leave.ng-leave-active {
+    transition: $SOC-Transition;
+    transform: translateX($SOC-Right);
+}
+
+.c-slideOutCard__wrapper {
+    @include padding($SOC-Padding);
+}
+
+.c-slideOutCard__contents {
+    position: relative;
+}
+
+.c-slideOutCard__mask.ng-enter,
+.c-slideOutCard__mask.ng-leave.ng-leave-active {
+    background-color: rgba($COLOR-GreyDark, 0);
+}
+
+.c-slideOutCard__mask.ng-leave,
+.c-slideOutCard__mask.ng-enter.ng-enter-active {
+    background-color: rgba($COLOR-GreyDark, 0.7);
+}
+
+.c-slideOutCard__mask {
+    transition: background-color 0.6s ease-in-out;
+}
+
+.c-slideOutCard__mask.active {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba($COLOR-GreyDark, 0.7);
+    z-index: $SOC-MaskZ;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

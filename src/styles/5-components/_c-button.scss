@@ -1,0 +1,207 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_BUTTON
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+$C_BUTTON-transition:       0.1s ease-in-out;
+$C_BUTTON-bg:               $COLOR-XCD-Green;
+$C_BUTTON-color:            $COLOR-White;
+$C_BUTTON-bg-hover:         $COLOR-XCD-BlueDark;
+$C_BUTTON-color-hover:      $COLOR-White;
+//
+// $C_BUTTON-shadow-color:     $COLOR-Primary;
+// $C_BUTTON-shadow-depth:     5;
+$C_BUTTON-padding:          16;
+$C_BUTTON-iconspace:        2rem;
+$C_BUTTON-fontsize:         $TYPE-SIZE-M;
+$C_BUTTON-iconsize:         20;
+$C_BUTTON-radius:           5rem; // As long as its bigger than height
+$C_BUTTON-minwidth:         220px;
+$C_BUTTON-visibletext:      true; // false for icon-only buttons
+
+/// BASE
+/// ----------------------------------------------------
+
+@mixin c_button(
+    $bg:                $C_BUTTON-bg,
+    $text:              $C_BUTTON-color,
+    $bg-hover:          $C_BUTTON-bg-hover,
+    $text-hover:        $C_BUTTON-color-hover,
+    $padding:           $C_BUTTON-padding,
+    $iconspace:         $C_BUTTON-iconspace,
+    $fontsize:          $C_BUTTON-fontsize,
+    $iconsize:          $C_BUTTON-iconsize,
+    $border-radius:     $C_BUTTON-radius,
+    $minwidth:          $C_BUTTON-minwidth,
+    // $shadow-color:      $C_BUTTON-shadow-color,
+    // $shadow-depth:      $C_BUTTON-shadow-depth,
+    $visibletext:       $C_BUTTON-visibletext) {
+    min-width: $minwidth;
+    @include link-custom($text, none, $text, none);
+
+    border-radius: $border-radius;
+    background-color: $bg;
+    transition: all #{$C_BUTTON-transition};
+    @include font-family($TYPE-FontFamily, $FONTLOADER-AltFontFamily, 700);
+
+    // Can't put display:flex on a button element, hence using a child element instead! #A11y
+    .c-button__body {
+        display: inline-flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: 100%;
+        @include padding($padding);
+    }
+
+    .c-button__text {
+        display: block;
+        text-align: center;
+        line-height: 1;
+        width: 100%;
+        @include font-family($TYPE-FONT-SansSerifNarrow, $FONTLOADER-AltFontFamily,);
+        @include font-size($fontsize);
+        @include padding-x($iconsize);
+
+        // @if $visibletext {
+        //     // Text and icon, add a space (else it's an icon by itself)
+        //     + .c-icon {
+        //         margin-left: $iconspace;
+        //     }
+        // }
+    }
+
+    .c-icon {
+        position: absolute;
+        @include font-size($iconsize);
+        // & + .c-button__text {
+        //     margin-left: $iconspace;
+        // }
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+        background-color: $bg-hover;
+        color: $text-hover;
+        box-shadow: none;
+    }
+}
+
+// Strip browser button style to very basic. Any and all buttons must now have a variant - primary, secondary, alt, altprimary, altsecondary etc...
+.c-button {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    display: inline-block;
+    padding: 0;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+.c-button--primary {
+    @include c_button();
+
+    .c-icon {
+        transform: rotate(270deg);
+        right: rem($C_BUTTON-padding);
+    }
+}
+
+.c-button--flip {
+    @include c_button();
+
+    .c-icon {
+        order: -1;
+        transform: rotate(90deg);
+        left: rem($C_BUTTON-padding);
+    }
+}
+
+.c-button--secondary {
+    @include c_button($bg: $COLOR-XCD-BlueDark, $text: $COLOR-White, $bg-hover: $COLOR-XCD-Green);
+}
+
+/**
+ * This is button styles for dropdowns in the nav.
+ * Not book an appointment button.
+*/
+.c-button--nav {
+    .c-button__body {
+        width: 100%;
+        justify-content: center;
+        display: inline-flex;
+        align-items: center;
+
+        @include media(screen, "<=menu-medium") {
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+        }
+    }
+
+    .c-button__text {
+        grid-column: 2 / 3;
+        justify-self: center;
+        @include padding-right(6);
+    }
+
+    .c-icon {
+        grid-column: 3 / 4;
+        justify-self: end;
+    }
+}
+
+.c-button--appointment {
+    @include c_button($fontsize: $TYPE-SIZE-S);
+
+    .c-icon {
+        transform: rotate(270deg);
+        right: rem($C_BUTTON-padding);
+    }
+
+    .c-button__text {
+        font-weight: 700;
+
+        @include media(screen, ">menu-large") {
+            @include font-size(18);
+        }
+
+        @include media(screen, ">menu-xlarge") {
+            @include font-size($TYPE-SIZE-M);
+        }
+    }
+}
+
+// Shown next to inputs (eg, could be icon-only)
+.c-button--inline {
+    .c-button__body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        line-height: 1;
+        @include font-size(45);
+    }
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

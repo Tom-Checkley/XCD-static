@@ -1,0 +1,13 @@
+{
+    "ignoreFiles": [
+        "./_public/**/*",
+        "./dist/**/*",
+        "./css/**/*",
+        "./styles/css/**/*",
+        "./_site/**/*"
+    ],
+    "extends": [
+        "./alloy_config/stylelint/stylelint-config-standard.json",
+        "./alloy_config/stylelint/stylelint-config-jamcow.json"
+    ]
+}

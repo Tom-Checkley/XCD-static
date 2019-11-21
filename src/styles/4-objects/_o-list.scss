@@ -1,0 +1,133 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_LIST
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+/// BASE
+/// ----------------------------------------------------
+
+.o-l {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.o-l--bullet {
+    list-style: inside disc;
+
+    .o-l--bullet {
+        list-style: inside circle;
+        margin-left: 25px;
+    }
+}
+
+// Utility class - Horizontal Left to Right
+.o-l--h {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        @include padding-right($TYPE-FontSize);
+    }
+}
+
+// Horizontal list, aligned to right
+.o-l--rh {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    li {
+        @include padding-left($TYPE-FontSize);
+    }
+}
+
+// Horizontal list, aligned to right, reversed
+.o-l--rhr {
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row-reverse wrap;
+
+    li {
+        @include padding-left($TYPE-FontSize);
+    }
+}
+
+.o-dl {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+}
+
+.o-dl__t {
+    //
+}
+
+.o-dl__d {
+    //
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+.o-l--nav {
+    width: 100%;
+
+    @include media(screen, ">medium") {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.o-l--breadcrumbs {
+    .o-l__item {
+        display: flex;
+        align-items: center;
+        color: hsl(0, 0%, 90%);
+        @include padding-right($TYPE-FontSize /2);
+
+        &:not(:first-child) .o-l__link {
+            @include padding-left($TYPE-FontSize /2);
+        }
+    }
+
+    .o-l__link {
+        @include link-custom(#757575, none, #757575, underline);
+    }
+}
+
+// Sitemap Homepage
+.o-l--sitemap {
+    list-style: disc;
+    @include margin-left($TYPE-SIZE-M * 2);
+
+    // First-level pages
+    .o-l--sitemap {
+        list-style: disc;
+
+        // Sub-pages
+        .o-l--sitemap {
+            list-style: circle;
+        }
+    }
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

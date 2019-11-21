@@ -1,0 +1,49 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_INPUT
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+// Called outline, but we're using box-shadow
+$C_INPUT-Outline: 0 0 0 1px rgba(90, 90, 90, 1);
+$C_INPUT-Outline-Focus: 0 0 0 2px rgba(68, 68, 68, 0.6);
+$C_INPUT-Outline-Focus-Alt: 0 0 0 2px rgba(190, 190, 190, 0.6);
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-error-summary {
+    border-left: 6px solid $COLOR-Error;
+    padding: 10px;
+    background-color: fade-out($COLOR-Error, 0.97);
+    background-image: linear-gradient(90deg, fade-out($COLOR-Error, 0.97) 75%, fade-out($COLOR-Error, 1));
+}
+
+.c-error-summary__title {
+    margin-top: 0;
+}
+
+.c-error-summary__body {
+
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

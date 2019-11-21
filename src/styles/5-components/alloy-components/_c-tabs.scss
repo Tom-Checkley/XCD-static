@@ -1,0 +1,115 @@
+﻿/// <reference path="../main.scss" />
+
+////
+/// C_TABS
+////
+
+// VARIABLES
+// ----------------------------------------------------
+
+$C_TABS-TrayBgColor:          $COLOR-GreyLightest;
+$C_TABS-TrayColor:            $COLOR-Primary;
+$C_TABS-TrayBorder:           1px solid $COLOR-GreyLighter;
+
+$C_TABS-ContentBgColor:       $C_TABS-TrayBgColor;
+$C_TABS-ContentColor:         $C_TABS-TrayColor;
+
+// BASE
+// ----------------------------------------------------
+
+.c-tabs {
+    background-color: $C_TABS-TrayBgColor;
+    color: $C_TABS-TrayColor;
+    @include margin-bottom($TYPE-LineHeight);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.c-tabs__tray {
+    border-bottom: $C_TABS-TrayBorder;
+    @include padding($TYPE-LineHeight);
+}
+
+.c-tabs__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include media(screen, ">small") {
+        display: flex;
+        flex-wrap: wrap;
+
+        .c-tabs__item {
+            @include padding-right($TYPE-FontSize);
+        }
+    }
+
+    // tabs stacked to left of the content
+    .c-tabs--vertical & {
+        display: block;
+        width: 100%;
+
+        .c-tabs__item,
+        .c-tabs__link {
+            display: block;
+            position: static;
+        }
+
+        .c-tabs__item {
+            @include padding-right(0);
+        }
+    }
+}
+
+.c-tabs__content {
+    background-color: $C_TABS-ContentBgColor;
+    color: $C_TABS-ContentColor;
+    @include padding($TYPE-LineHeight);
+}
+
+// Optional active states for the tab list and tab body
+.c-tabs__list.active {
+    // outline: 1px solid hotpink;
+}
+
+.c-tabs__body.active {
+    // outline: 1px solid lime;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+@include media(screen, ">small") {
+    .c-tabs--vertical {
+        display: flex;
+
+        .c-tabs__tray {
+            flex-basis: 230px;
+            width: 230px;
+            border-bottom: none;
+            border-right: $C_TABS-TrayBorder;
+        }
+
+        .c-tabs__content {
+            flex-basis: calc(100% - 230px);
+            width: calc(100% - 230px);
+        }
+    }
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

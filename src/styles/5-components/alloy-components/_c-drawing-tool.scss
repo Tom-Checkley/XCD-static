@@ -1,0 +1,66 @@
+/// <reference path="../main.scss" />
+
+////
+/// TEMPLATE
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$DRAWINGTOOL-BorderWidth:       1px;
+$DRAWINGTOOL-BorderColor:       $COLOR-GreyLight;
+$DRAWINGTOOL-BorderRadius:      4px;
+
+////
+/// @param { string } $DRAWINGTOOL-CursorUrl - set a custom cursor image. Defaults to pointer, can look like an input or textarea;
+/// @param { number number} $DRAWINGTOOL-Coords - the cursor 'hot spot';
+/// @param { cursor proprty } $DRAWINGTOOL-CursorFallback - Fallback if cursor not supported / img fails to load;
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Basic_User_Interface/Using_URL_values_for_the_cursor_property;
+////
+$DRAWINGTOOL-CursorUrl:         './assets/pencil.jpg';
+$DRAWINGTOOL-Coords:            0 0;
+$DRAWINGTOOL-CursorFallback:    pointer;
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-drawingTool {
+    //
+}
+
+.c-drawingTool__canvas {
+    border: $DRAWINGTOOL-BorderWidth solid $DRAWINGTOOL-BorderColor;
+    border-radius: $DRAWINGTOOL-BorderRadius;
+    cursor: url($DRAWINGTOOL-CursorUrl) $DRAWINGTOOL-Coords, $DRAWINGTOOL-CursorFallback;
+}
+
+// Could be used in future for color picker / stroke width etc;
+.c-drawingTool__options {}
+
+// Wrapper for save / clear buttons
+.c-drawingTool__actions {}
+
+.c-drawingTool__button {}
+
+.c-drawingTool__button--save {}
+
+.c_drawingTool__button--clear {}
+
+
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

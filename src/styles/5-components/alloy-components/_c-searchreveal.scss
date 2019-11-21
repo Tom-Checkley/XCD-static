@@ -1,0 +1,143 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_SEARCHREVEAL
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$O_SEARCH-ani-time:           0.25s ease-in-out;
+$O_SEARCH-button-width:       40;
+
+/// BASE
+/// ----------------------------------------------------
+
+.o-search {
+    background-color: #977d7d;
+    color: #ffffff;
+    padding: 30px;
+}
+
+.c-search {
+    display: flex;
+    justify-content: flex-end;
+    transition: all $O_SEARCH-ani-time;
+    width: auto;
+    line-height: 1;
+
+    .o-form__control--label {
+        order: 1;
+        flex: 0 0 50px;
+    }
+
+    .o-form__control--input {
+        width: 0;
+        overflow: hidden;
+        transition: all $O_SEARCH-ani-time;
+        max-width: 100%;
+        flex: 0 1 auto;
+    }
+
+    .o-form__control--actions {
+        flex: 0 0 0;
+    }
+
+    .o-form__label {
+        order: 1;
+        display: block;
+        overflow: hidden;
+        text-indent: 0;
+        background-color: deeppink;
+        color: #ffffff;
+        border-radius: 50%;
+        transition: background-color $O_SEARCH-ani-time, color $O_SEARCH-ani-time;
+        @include font-size($O_SEARCH-button-width);
+        @include size($O_SEARCH-button-width * 1px);
+
+        svg {
+            padding: 10px;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: #ffffff;
+            color: deeppink;
+        }
+    }
+
+    .o-form__input .c-input {
+        box-shadow: inset 0 0 0 1px #5a5a5a;
+        background-color: #ffffff;
+        color: #222222;
+    }
+
+    .c-button {
+        display: none;
+        @include font-size($O_SEARCH-button-width);
+
+        background-color: #ffffff;
+        color: deeppink;
+        border-radius: 50%;
+        padding: 10px;
+        transition: background-color $O_SEARCH-ani-time, color $O_SEARCH-ani-time;
+        @include font-size($O_SEARCH-button-width - 20);
+        @include size($O_SEARCH-button-width * 1px);
+    }
+
+    &.has-content {
+        width: auto;
+
+        .o-form__control--label {
+            flex: 0 0 0;
+        }
+
+        .o-form__control--input {
+            width: 100%;
+        }
+
+        .o-form__control--actions {
+            flex: 0 0 50px;
+        }
+
+        .o-form__label {
+            @include hidden-text;
+        }
+
+        .c-button {
+            display: flex;
+            width: $O_SEARCH-button-width * 1px;
+            align-items: center;
+            justify-content: center;
+
+            &:hover,
+            &:focus {
+                background-color: deeppink;
+                color: #ffffff;
+            }
+        }
+    }
+
+    .o-form__control--input:focus-within {
+        .o-form__control--input {
+            width: 100%;
+        }
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

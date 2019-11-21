@@ -1,0 +1,27 @@
+<div aria-live="polite">
+    <aside class="c-slideOutCard__wrapper">
+        <div class="c-slideOutCard__contents">
+            <button role="button" class="c-slideOutCard__close" data-ng-click="close()">
+                <svg class="c-icon c-icon--close" aria-hidden="true">
+                    <use xlink:href="/assets/icons/symbols.svg#icon--cross"></use>
+                </svg>
+            </button>
+            <div data-ng-if="config.templateUrl" data-ng-include="config.templateUrl"></div>
+        </div>
+        <div data-ng-if="!config.templateUrl">
+            <p><strong>No TemplateUrl has been set.</strong></p>
+            <p>The slide in card accepts the following parameters as an argument on slideOutCard.push(args);</p>
+            <ul>
+                <li>
+                    <strong>config:</strong>
+                    <ul>
+                        <li><strong>timer</strong> - the length of time the card displays. Default: 5000</li>
+                        <li><strong>templateUrl</strong> - URL pointing to the html file that will be rendered inside the slide out card. Default: undefined</li>
+                        <li><strong>isTimed</strong> - whether the card should use the timer. Default: true</li>
+                    </ul>
+                </li>
+                <li><strong>model</strong> - This represents the model that will be passed in to render the TemplateUrl specified above.</li>
+            </ul>
+        </div>
+    </aside>
+</div>

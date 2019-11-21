@@ -1,0 +1,28 @@
+<div class="c-drawingTool">
+    <canvas id="drawingToolCanvas"
+        class="c-drawingTool__canvas"
+        data-ng-mousedown="onStartDrawing($event)"
+        data-ng-mousemove="onDraw($event)"
+        data-ng-mouseup="stopDraw($event)"
+        data-ng-touchstart="onStartDrawing($event)"
+        data-ng-touchmove="onDraw($event)"
+        data-ng-touchend="stopDraw($scope.event)">
+    </canvas>
+
+    <!-- For future use, color picker, pen size etc -->
+    <div class="c-drawingTool__options"></div>
+
+    <div class="c-drawingTool__actions">
+        <button data-ng-click="clearCanvas()" class="c-button c-drawingTool__button c-drawingTool__button--clear">
+            <span class="c-button__body">
+                <span class="c-button__text">Clear</span>
+            </span>
+        </button>
+        
+        <button data-ng-click="saveDrawing()" class="c-button c-drawingTool__button c-drawingTool__button--save">
+            <span class="c-button__body">
+                <span class="c-button__text">Save</span>
+            </span>
+        </button>
+    </div>
+</div>

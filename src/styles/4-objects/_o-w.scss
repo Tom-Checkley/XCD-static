@@ -1,0 +1,115 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_Wrap
+////
+// .o-w = wrapper
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+/// BASE
+/// ----------------------------------------------------
+
+/// WRAP
+/// Surrounds any grid, provides sectional wrapping
+.o-w {
+    margin: 0 auto;
+    width: 100%;
+    max-width: em($GRID-MaxWidth);
+
+    @include padding-x(10);
+
+    @include media(screen, ">small") {
+        @include padding-x(20);
+    }
+
+    @include media(screen, ">large") {
+        @include padding-x(90);
+    }
+
+    @include media(screen, ">gridmax") {
+        @include padding-x(20);
+    }
+
+    .o-w {
+        @include padding-x(0);
+
+        @include media(screen, ">small") {
+            @include padding-x(0);
+        }
+        @include media(screen, ">large") {
+            @include padding-x(0);
+        }
+    
+        @include media(screen, ">gridmax") {
+            @include padding-x(0);
+        }
+    }
+}
+
+.o-w--full {
+    max-width: 100%;
+    @include padding-x(0);
+}
+
+.o-w--nogutter {
+    @include padding-x(0);
+
+    @include media(screen, ">small") {
+        @include padding-x(0);
+    }
+}
+
+.o-w--wide {
+    // max-width: em($GRID-MaxWidth * (12 / 10));
+    max-width: em($GRID-MaxWidth * (11 / 9));
+}
+
+.o-w--wider {
+    // max-width: em($GRID-MaxWidth * (12 / 10));
+    max-width: em($GRID-MaxWidth * (12 / 9));
+}
+
+.o-w--tight {
+    // max-width: em($GRID-MaxWidth * (10 / 12));
+    max-width: em($GRID-MaxWidth - 300);
+}
+
+.o-w--tighter {
+    // max-width: em($GRID-MaxWidth * (8 / 12));
+    max-width: em($GRID-MaxWidth - 450);
+}
+
+.o-w--tightest {
+    // max-width: em($GRID-MaxWidth * (6 / 12));
+    max-width: em($GRID-MaxWidth - 600);
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+.o-w--header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.o-w--creator {
+    display: flex;
+    justify-content: flex-end;
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

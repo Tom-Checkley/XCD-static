@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js no-grid" lang="en-GB">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>{{ page.title }}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png?v=A07gRjNAOo">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png?v=A07gRjNAOo">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png?v=A07gRjNAOo">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest?v=A07gRjNAOo">
+    <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg?v=A07gRjNAOo" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico?v=A07gRjNAOo">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml?v=A07gRjNAOo">
+    <meta name="theme-color" content="#ffffff">
+
+    {% if page.cssfile %}
+        <link href="{{ page.cssfile }}?v={{ "now" | date: "%Y%m%d%H%M%S" }}" rel="stylesheet" media="all" />
+    {% else %}
+        <link href="/assets/css/main.css?v={{ "now" | date: "%Y%m%d%H%M%S" }}" rel="stylesheet" media="all" />
+    {% endif %}
+    {% if page.extracssfile %}
+        <link href="{{ page.extracssfile }}?v={{ "now" | date: "%Y%m%d%H%M%S" }}" rel="stylesheet" media="all" />
+    {% endif %}
+
+    <style type="text/css" media="screen">
+        svg {
+            width: 1em;
+            height: 1em;
+        }
+    </style>
+
+    <!-- All browsers that don't support CSS grid, also don't support `CSS.supports` -->
+    <script>if (!!(((window.CSS && window.CSS.supports) || false) && (CSS.supports("display", "grid")))) {document.querySelector('html').classList.remove('no-grid');}</script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Raleway:400,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="fonts-loaded" {% if page.noangular %} {% else %} data-ng-app="app" {% endif %}>
+
+    {% include header.html %}
+
+
+    <main id="main-content" class="o-main" tabindex="-1">
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    {% include footer-js/js.html %}
+
+    <script src="//instant.page/1.1.0" type="module" integrity="sha384-EwBObn5QAxP8f09iemwAJljc+sU+eUXeL9vSBw1eNmVarwhKk2F9vBEpaN9rsrtp"></script>
+</body>
+
+</html>

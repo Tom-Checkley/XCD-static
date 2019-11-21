@@ -1,0 +1,240 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_NAV
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$O_N-Height--Mob:           $NAV-Height--Mob;
+$O_N-Height--Tab:           $NAV-Height--Tab;
+$O_N-Height--FullScreen:    $NAV-Height--FullScreen;
+
+/// BASE
+/// ----------------------------------------------------
+
+.o-n {
+    @include flex($wrap: nowrap);
+}
+
+.o-n__wrapper {
+    @include flex($align: center);
+}
+
+.o-n__container {
+    @include flex($align: center, $wrap: nowrap);
+    background-color: $COLOR-White;
+    height: $O_N-Height--Mob;
+    flex-grow: 1;
+
+    @include media(screen, ">menu-medium", "<=menu-xlarge") {
+        height: $O_N-Height--Tab;
+    }
+    @include media(screen, ">menu-xlarge") {
+        height: $O_N-Height--FullScreen;
+    }
+
+    @include media(screen, "<=menu-medium") {
+        .o-n__list {
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            z-index: $Z-INDEX-Level9;
+            top: 0;
+            left: 0;
+            @include flex($direction: column, $align: center);
+            background-image: url('/assets/img/bg-connect.png');
+            background-color: lighten($COLOR-XCD-GreyDarkest, 20%);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+
+            &.nav-active {
+                transform: translateX(0%);
+            }
+        }
+
+        .o-n__mob-header {
+            color: $COLOR-White;
+            @include flex($align: center, $justify: space-between);
+            height: $O_N-Height--Mob;
+            width: 100%;
+            background-color: $COLOR-XCD-GreyDarkest;
+            mix-blend-mode: hard-light;
+            @include padding(10, 20);
+        }
+
+        .o-l--nav {
+            flex-grow: 1;
+            @include flex(column);
+            overflow-y: auto;
+
+            .o-n__item {
+                text-align: center;
+                @include padding(10, 30);
+            }
+
+            & > .o-n__item {
+                width: 100%;
+                background-color: $COLOR-XCD-GreyDarkest;
+                mix-blend-mode: hard-light;
+
+                &:last-child {
+                    justify-content: flex-start;
+                    flex-grow: 2; // force last link to stretch to the bottom of the screen
+                    @include padding-bottom(30);
+                }
+
+                &.active {
+                    background-color: lighten($COLOR-XCD-BlueDark, 5%);
+                }
+            }
+
+            .o-n__link {
+                display: block;
+                width: 100%;
+                max-width: 340px;
+                margin: auto;
+                @include font-size($TYPE-SIZE-XL);
+            }
+        }
+    }
+
+    .o-n__list {
+        @include media(screen, ">menu-medium", "<=menu-xlarge") {
+            @include padding-left(20);
+        }
+        @include media(screen, ">menu-xlarge") {
+                @include padding-left(60);
+        }
+    }
+}
+
+.o-n__mob-header {
+    display: none;
+}
+
+.o-n__nav-btn {
+    @include padding-x(20);
+
+    @include media(screen, ">menu-medium") {
+        display: none;
+    }
+}
+
+.o-n__actions {
+    @include flex($align: center);
+    @include padding-right(10);
+
+    .o-n__list {
+        display: none;
+
+        @include media(screen, ">menu-small") {
+            @include flex($align: center);
+        }
+    }
+
+    .o-n__item {
+        @include padding-right(0);
+    }
+
+    .o-n__link {
+        @include link-custom($COLOR-White, none, $COLOR-XCD-Blue, none);
+    }
+
+    &::before {
+        content: '';
+        background-color: $COLOR-White;
+        clip-path: polygon(0 0, 100% 0, 0 100%, 0 0);
+        margin-left: -1px;
+        @include size($O_N-Height--Mob);
+
+        @include media(screen, ">menu-medium", "<=menu-xlarge") {
+            @include size($O_N-Height--Tab);
+        }
+        @include media(screen, ">menu-xlarge") {
+            @include size($O_N-Height--FullScreen);
+        }
+    }
+}
+
+.o-n__list {
+    display: flex;
+    flex-grow: 1;
+}
+
+.o-n__item {
+    position: relative;
+
+    .c-icon {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &.active .c-icon {
+        transform: rotate(180deg);
+    }
+}
+
+.o-n__link {
+    display: inline-block;
+    @include font-family($TYPE-FONT-SansSerifNarrow, $FONTLOADER-AltFontFamily, 700);
+    @include link-custom($COLOR-White, none, $COLOR-White, none);
+
+    @include media(screen, ">menu-medium") {
+        @include link-custom($COLOR-Black, none, $COLOR-XCD-Blue, none);
+    }
+
+    @include media(screen, ">menu-large") {
+        @include font-size(18);
+    }
+
+    @include media(screen, ">menu-xlarge") {
+        @include font-size($TYPE-SIZE-M);
+    }
+}
+
+.o-n__subcontainer {
+    @include media(screen, ">menu-medium") {
+        min-width: 100%;
+        position: absolute;
+        left: -30px;
+        top: 100%;
+        @include padding-top(20px);
+    }
+}
+
+.o-n__sublist {
+    position: relative;
+    display: none;
+    @include padding(0);
+
+    .o-n__link,
+    .o-n__item.active & {
+        display: block;
+    }
+
+    @include media(screen, '>menu-large') {
+        border-top: 3px solid $COLOR-XCD-Blue;
+        background-color: $COLOR-White;
+        width: 250px;
+        @supports (width: max-content) {
+            width: max-content;
+        }
+
+        .o-n__link {
+            @include padding(10, 30);
+        }
+
+        .o-n__item {
+            & + .o-n__item {
+                border-top: 1px solid $COLOR-XCD-GreyLightest;
+            }
+        }
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+// .o-n--main {
+
+// }
+

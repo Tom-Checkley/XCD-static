@@ -1,0 +1,56 @@
+/// <reference path="../../main.scss" />
+////
+/// Container Query
+////
+
+// For when a media query won't work. Skips the intermediate step, using flex to layout
+
+//       instead of
+//
+//         [] [] []
+//
+//            to
+//
+//          []  []
+//            []
+//
+//            to
+//
+//            []
+//            []
+//            []
+//
+// removes the intermediate step
+//     without media query
+//
+//         [] [] []
+//
+//            to
+//
+//            []
+//            []
+//            []
+
+// http://www.heydonworks.com/article/the-flexbox-holy-albatross
+// https://codepen.io/perpetualgrimace/pen/XOKzzo?editors=1100
+// https://medium.freecodecamp.org/the-fab-four-technique-to-create-responsive-emails-without-media-queries-baf11fdfa848
+
+// VARIABLES
+// ----------------------------------------------------
+
+// BASE
+// ----------------------------------------------------
+
+// 37.5em = 600px
+@mixin containerquery ($maxWidth: 37.5em, $margin-x: 1, $margin-y: 1) {
+    display: flex;
+    flex-wrap: wrap;
+    @include margin(-$margin-x, -$margin-y);
+
+    & > * {
+        flex-grow: 1;
+        width: 100%;
+        flex-basis: calc((#{$maxWidth} * 999.999) - (100% * 999.999));
+        @include margin($margin-x, $margin-y);
+    }
+}

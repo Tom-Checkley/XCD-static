@@ -1,0 +1,210 @@
+/// <reference path="../../main.scss" />
+
+////
+/// TYPOGRAPHY
+////
+
+html {
+    line-height: 1.6;
+}
+
+body {
+    @include font-family($TYPE-FontFamily, $FONTLOADER-FontFamily, 400);
+}
+
+// Global site-wide text size
+.o-w {
+    // Trying to globally resize body text without affecting o-w 'em'-based sizing...
+    // This is in 'typography' so as to avoid specificity issues where we want to override or set an elements font-size.
+    //  We set the font-size on the immediate children of o-w, so that all child elements will inherit the cascade.
+    > *:not(.o-w):not(h1):not(h2):not(h3):not(h4):not(h5):not(svg):not(.o-s__skip) {
+        @include font-size($TYPE-SIZE-M);
+    }
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+:focus,
+a:focus {
+    outline: dotted 1px $COLOR-XCD-GreyDarkest;
+}
+
+// HEADINGS
+// ----------------------------------------------------
+
+// .u-h1, .u-h2 are utility classes for overriding heading styles
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.u-h1,
+.u-h2,
+.u-h3 {
+    @include font-family($TYPE-HeadingsFontFamily, $FONTLOADER-HeadingsFontFamily, 900);
+    @include margin($TYPE-LineHeight, 0, $TYPE-LineHeight, 0);
+
+    text-rendering: optimizelegibility;
+
+    &:first-child {
+        @include margin-top(0);
+    }
+
+    &:last-child {
+        @include margin-bottom(0);
+    }
+
+    // Too specific - causing specificity issues, eg single h1 in c-header can't override easily when I want a margin
+    // &:first-child:last-child {
+    //     @include margin-y(0);
+    // }
+}
+
+h1,
+.u-h1 {
+    @include font-size-heading($TYPE-SIZE-XXXXL, $TYPE-HeadingsLineHeight);
+    // @include poly-fluid-sizing('font-size', (576px: 38px, 768px: 60px));
+}
+
+h2,
+.u-h2 {
+    @include font-size-heading($TYPE-SIZE-XXXL, $TYPE-HeadingsLineHeight);
+    // @include poly-fluid-sizing('font-size', (576px: 38px, 768px: 60px));
+}
+
+h3,
+.u-h3 {
+    @include font-size-heading($TYPE-SIZE-XXL, $TYPE-HeadingsLineHeight);
+}
+
+h4 {
+    @include font-size-heading($TYPE-SIZE-XL, $TYPE-HeadingsLineHeight);
+}
+
+h5 {
+    @include font-size-heading($TYPE-SIZE-M, $TYPE-HeadingsLineHeight);
+}
+
+h6 {
+    @include font-size-heading($TYPE-SIZE-M, $TYPE-HeadingsLineHeight);
+}
+
+// There's an odd case of not quite an h2 or h3
+.u-subheading {
+    @include font-size-heading($TYPE-SIZE-XXL, $TYPE-HeadingsLineHeight);
+    // @include poly-fluid-sizing('font-size', (576px: 30px, 768px: 38px));
+}
+
+// BODY
+// ----------------------------------------------------
+p {
+    @include margin($TYPE-LineHeight, 0);
+
+    &:first-child {
+        @include margin-top(0);
+    }
+
+    &:last-child {
+        @include margin-bottom(0);
+    }
+
+    &:first-child:last-child {
+        @include margin-y(0);
+    }
+}
+
+blockquote {
+    @include padding(0, 0, 0, $TYPE-LineHeight);
+    @include margin(0, 0, $TYPE-LineHeight, 0);
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $COLOR-GreyLighter;
+    padding: 0;
+
+    @include margin($TYPE-LineHeight, 0);
+}
+
+ins {
+    background: #ffff00;
+    color: contrast-color(#ffff00);
+    text-decoration: none;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: $TYPE-CodeFontFamily;
+
+    @include font-size($TYPE-FontSize);
+}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+    code {
+        display: block;
+
+        @include padding($TYPE-FontSize);
+    }
+}
+
+code {
+    background-color: hsl(0, 0%, 95%);
+    // color: #f8f8f8;
+    @include padding(0, $TYPE-FontSize /2);
+}
+
+pre.highlight,
+.highlight > pre {
+    max-width: 100%;
+    overflow: auto;
+    // border-left: 6px solid lighten($COLOR-ALLOY-BlueD2, 25%);
+
+    code {
+        // min-width: fit-content;
+        // max-width: 100%;
+        border-left: 32px solid #f8f8f8;
+    }
+}
+
+q {
+    quotes: none;
+
+    &::before,
+    &::after {
+        content: "";
+        content: none;
+    }
+}
+
+small,
+.small {
+    font-weight: normal;
+    font-size: 80%;
+}
+
+summary {
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+i {
+    color: inherit;
+    font-style: normal;
+}

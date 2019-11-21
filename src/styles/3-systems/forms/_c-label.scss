@@ -1,0 +1,48 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_LABEL
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+/// BASE
+/// ----------------------------------------------------
+
+label {
+    cursor: pointer;
+}
+
+.c-label {
+    display: block;
+    width: 100%;
+    @include padding-top(10);
+}
+
+.c-label__text {
+    @include font-family($TYPE-HeadingsFontFamily, $FONTLOADER-HeadingsFontFamily, 500);
+}
+
+.c-label-hint {
+    font-size: 80%;
+    color: $COLOR-Grey;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

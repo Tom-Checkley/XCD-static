@@ -1,0 +1,58 @@
+/// <reference path="1-abstracts/__base.scss" />
+/// <reference path="2-elements/__base.scss" />
+/// <reference path="3-systems/forms/__base.scss" />
+/// <reference path="3-systems/icons/__base.scss" />
+/// <reference path="4-objects/__base.scss" />
+/// <reference path="5-components/alloy-modules/__base.scss" />
+/// <reference path="5-components/__base.scss" />
+/// <reference path="7-utilities/__base.scss" />
+
+////
+/// ALLOY MAIN - DESIGN LANGUAGE
+////
+
+/*! CSS by Element78 */
+
+/// ABSTRACTS - Purely abstract - no css should output
+@import "1-abstracts/_base";
+
+/// BASE - Normalise, typography and grid
+@import "2-elements/_base";
+
+/// SYSTEMS
+@import "3-systems/forms/_base";
+@import "3-systems/icons/_base";
+
+/// OBJECTS (for describing layout - the bricks for windows to go in)
+@import "4-objects/_base";
+
+/// ALLOY LEGACY
+/// (If we can use these, customise it, or make a brand new module)
+// @import "5-components/alloy--legacy/_base";
+
+/// ALLOY COMPONENTS
+// @import "5-components/alloy-components/_base";
+
+/// COMPONENTS
+@import "5-components/_base";
+
+/// VENDOR / 3rd PARTY LIBRARIES
+@import "6-vendor/_base";
+
+/// UTILITIES - Helpers & utilitiy classes
+@import "7-utilities/_base";
+
+/// PRINT
+/// TODO: This probably should be brought in as separate print stylesheet
+@import "2-elements/media-print";
+
+/// A11y
+/// Reduced Motion
+@import "2-elements/media-a11y";
+
+/// DEBUG - debugging panel and borked HTML
+@import "2-elements/debug";
+
+/// DEBUG - a11y.css warnings/advice
+/// @link http://ffoodd.github.io/a11y.css/index.html
+@import "2-elements/debug--a11y";

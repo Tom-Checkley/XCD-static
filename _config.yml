@@ -1,0 +1,32 @@
+# File: _config.yml
+# https://jekyllrb.com/docs/configuration/
+#exclude: ["node_modules", "package.json", "gulpfile.js", "vendor/gems/", "vendor/ruby/"]
+destination: 'dist/_site'
+source: 'src/html'
+include: ["_pages"]
+exclude:
+  - package.json
+  - node_modules
+  - gulpfile.js
+  - Gulpfile.js
+  - packages
+  - scripts
+  - assets/css
+  - assets/css/maps
+keep_files:
+  - assets/css
+  - assets/css/maps
+  - assets/js
+  - assets/js/maps
+lsi: true
+permalink: /:slug/
+collections_dir: collections
+collections:
+  mycollection1:
+    output: true
+    permalink: /:collection/:path
+timezone: GB
+markdown: kramdown
+kramdown:
+   syntax_highlighter_opts:
+      disable : false

@@ -1,0 +1,149 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_CARD_ACCORDION_CSS
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+/// BASE
+/// ----------------------------------------------------
+
+$CARDEXPANDER-Gap: 15;
+
+.o-l--cardexpander {
+    display: flex;
+    flex-flow: row wrap;
+    @include margin(-$CARDEXPANDER-Gap, 0, 0, -$CARDEXPANDER-Gap);
+}
+
+// Card expander item
+.o-l__ce-i {
+    $total: 50; // Number of expandable cards
+    $grandtotal: $total * 2; // Combined number of cards and expansion elements.
+
+    $col-MD: 2;
+    $ncol-MD: $col-MD * 2;
+
+    $col-LG: 3;
+    $ncol-LG: $col-LG * 2;
+
+    // By setting the expansion to have order value as the next set of lines,
+    // items with the same CSS order will be sorted by their HTML order
+    // So all the expansions will be grouped together after their cards, but before the next set
+    // We can set the number via media query, so that JS can expand and/or populate the content
+
+    @for $i from 0 through $grandtotal {
+        // iterate across total
+
+        // Set defined order to each card
+        &:nth-child(#{$i}) {
+            order: $i;
+        }
+
+        // increment iteratation
+        $i: $i + 1;
+    }
+
+    @for $i from 0 through $total {
+        @include media(screen, ">small", "<=large") {
+            $nth-col-MD: ($ncol-MD * $i) + 1;
+            $nth-order-MD: $nth-col-MD + $ncol-MD;
+
+            // 1, 5, 9, 13, 17
+            &.o-l__ce-b:nth-child(n + #{$nth-col-MD}) {
+                // outline: 10px solid rgba(55, 0, 255, 0.7);
+                order: $nth-order-MD;
+            }
+        }
+
+        @include media(screen, ">large") {
+            $nth-col-LG: ($ncol-LG * $i) + 1;
+            $nth-order-LG: $nth-col-LG + $ncol-LG;
+
+            // 1, 7, 13, 19, 25
+            &.o-l__ce-b:nth-child(n + #{$nth-col-LG}) {
+                // outline: 10px solid rgba(55, 0, 255, 0.7);
+                order: $nth-order-LG;
+            }
+        }
+
+        // increment iteratation
+        $i: $i + 1;
+    }
+}
+
+// Card expander card
+// Card expander body
+.o-l__ce-c,
+.o-l__ce-b {
+    outline: 1px solid rgba(33, 16, 107, 0.2);
+    outline-offset: -1px;
+
+    @include media(screen, "<small") {
+        flex: 0 0 100%;
+    }
+
+    @include media(screen, ">small", "<=large") {
+        flex: 0 0 (100% / 2);
+    }
+
+    @include media(screen, ">large") {
+        flex: 0 0 (100% / 3);
+    }
+
+    // A margin is required on child elements to make the gap work
+    > * {
+        @include margin($CARDEXPANDER-Gap, 0, 0, $CARDEXPANDER-Gap);
+    }
+}
+
+// Card expander card
+.o-l__ce-c {
+    // hover state is only for testing - use a button to toggle the is-active class
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active,
+    &.is-active {
+        + .o-l__ce-b {
+            max-height: 300px; // Can set this high, and/or remove style with JS, or animate with JS instead
+            transition: max-height 0.7s ease-out;
+        }
+    }
+}
+
+// Card expander body
+.o-l__ce-b {
+    flex: 0 0 100%;
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+// Card expander content (example name - can be anything)
+// but a margin is required to make the gap work (applied via > * on parent)
+.o-l__ce-content {
+    border: 1px dashed red;
+    height: 260px;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

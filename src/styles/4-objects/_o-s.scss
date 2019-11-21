@@ -1,0 +1,149 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_S (Object Stripe)
+///
+// Surrounds an o-w (Object Wrap)
+// Used for adding options like clipping and/or mix-blend modes
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+$O_S-Padding:                   60px;
+
+/// BASE
+/// ----------------------------------------------------
+
+body {
+    @supports (flex-direction: column) {
+        display: flex;
+        flex-flow: column;
+    }
+}
+
+main {
+    position: relative;
+    background-color: $COLOR-White;
+	flex: 1 0 auto;
+
+    &:target,
+    &:focus {
+        outline: none;
+    }
+}
+
+.o-sticky-header {
+    position: sticky;
+    top: -92px;
+    z-index: $Z-INDEX-Level6;
+}
+
+.o-s {
+    position: relative;
+    @include padding-y($O_S-Padding);
+}
+
+// Rather than a background image - we use a picture element
+// (responsive, optimised & appropriately sized image formats)
+// We use object-fit:cover to fill entire background, polyfill if unsupported
+.o-s__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    // background image, make it unselectable
+    user-select: none;
+    pointer-events: none;
+
+    img {
+        display: block;
+        object-fit: cover;
+        object-position: center top;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// Better than adding modifier classes everywhere
+// Places contents above the before/after and picture/iframe/video
+.o-s {
+    > *:not(picture):not(svg):not(.o-header__nav-wrapper) {
+        position: relative;
+        z-index: $Z-INDEX-Level1;
+    }
+}
+
+.o-main {
+    @include padding-y($O_S-Padding * 0.6);
+}
+
+.o-s--header {
+    @include padding-top(0);
+    .o-s__title {
+        color: $COLOR-White;
+    }
+
+    .o-s__title--subtitle {
+        font-weight: 400;
+    }
+}
+
+.o-s--full-screen {
+    min-height: 100vh;
+}
+
+.o-s--footer {
+    background-color: hsl(212, 0%, 98%);
+    border-top: 1px solid #eaf1f9;
+    @include padding-y($O_S-Padding);
+}
+
+// .o-s--breadcrumbs {
+//     padding: 10px 0;
+//     background-color: hsl(212, 0%, 100%);
+//     border-bottom: 1px solid #eaf1f9;
+//     color: hsl(0, 0%, 80%);
+// }
+
+[class*="o-s--ztheme"] {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translate3d(0,0,0);
+        z-index: 2;
+    }
+}
+
+.o-s--ztheme-darkblue {
+    &::before {
+        background: linear-gradient(to top right, rgba($COLOR-XCD-BlueDark, 0.95), rgba($COLOR-XCD-BlueDark, 0.95) 20%, rgba($COLOR-XCD-BlueDark, 0.2));
+        mix-blend-mode: multiply;
+    }
+}
+
+
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}
+
+@include media(screen, ">large") {
+    //
+}

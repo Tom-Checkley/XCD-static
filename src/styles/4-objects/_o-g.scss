@@ -1,0 +1,125 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_G Grid System
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$AREA-Horizontal-Gap:           40px; // gap between areas
+
+$GRID-Horizontal-Gap:           25px;
+$GRID-Vertical-Gap:             25px;
+
+$GRID-2COL-Vertical-Gap:        60px;
+$GRID-2COL-Horizontal-Gap:      20px;
+
+@mixin gridgap($spacer: $GRID-Horizontal-Gap) {
+    .no-grid & {
+        @include margin(-$spacer, 0, 0, -$spacer);
+
+        > [class^='o-g__'] {
+            @include padding($spacer, 0, 0, $spacer);
+        }
+    }
+}
+
+@mixin nogridgap($spacer: $GRID-Horizontal-Gap) {
+    .no-grid & {
+        margin: initial;
+
+        > [class^='o-g__'] {
+            padding: initial;
+        }
+    }
+}
+
+/// BASE
+/// ----------------------------------------------------
+.o-g {
+    display: flex;
+    flex-flow: row wrap;
+    @include gridgap;
+
+    > * {
+        width: 100%;
+    }
+
+    @supports (display: $SUPPORTS-grid) {
+        display: grid;
+        grid-template-areas:
+            "head"
+            "body"
+            "body2"
+            "media"
+            "actions";
+        grid-template-columns: auto;
+        gap: $GRID-Horizontal-Gap $GRID-Vertical-Gap;
+    }
+
+    &--2col {
+        @include media(screen, ">large") {
+            grid-template-areas:
+                "head       media"
+                "body       media"
+                "body2      media"
+                "actions    media";
+            grid-template-columns: 1fr 1fr;
+            gap: $GRID-2COL-Horizontal-Gap $GRID-2COL-Vertical-Gap;
+        }
+    }
+
+    > .o-g__head {
+        grid-area: head;
+    }
+
+    > .o-g__body {
+        grid-area: body;
+    }
+
+    > .o-g__nav {
+        grid-area: nav;
+    }
+
+    > .o-g__media {
+        grid-area: media;
+    }
+
+    > .o-g__actions {
+        grid-area: actions;
+    }
+
+    > .o-g__secondary {
+        grid-area: secondary;
+    }
+
+    > .o-g__foot {
+        grid-area: foot;
+    }
+
+    > .o-g__aside {
+        grid-area: aside;
+    }
+
+    // VARIANTS
+    // ----------------------------------------------------
+    
+}
+
+
+
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

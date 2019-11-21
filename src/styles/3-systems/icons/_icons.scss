@@ -1,0 +1,144 @@
+/// <reference path="../../main.scss" />
+
+////
+/// C_ICON
+////
+
+/// HTML for icons:
+
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--search"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--alert"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--warning"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--arrowup"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--arrowdown"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--arrowleft"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--arrowright"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--bag"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--bagplus"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--fabric"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--reinvest"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--percent"></use></svg>
+// <svg class="c-icon" aria-hidden="true"><use xlink:href="/assets/icons/symbols.svg#icon--quickshop"></use></svg>
+
+// <svg class="c-icon icon--menu" aria-hidden="true">
+//     <use class="icon--burger" xlink:href="/assets/icons/symbols.svg#icon--burger"></use>
+//     <use class="icon--close" xlink:href="/assets/icons/symbols.svg#icon--close"></use>
+// </svg>
+
+//<svg class="c-icon c-icon--checkbox" aria-hidden="true">
+//     <use class="icon--checkbox__box" xlink:href="/assets/icons/symbols.svg#icon--checkbox"></use>
+//     <use class="icon--checkbox__tick" xlink:href="/assets/icons/symbols.svg#icon--checkbox__tick"></use>
+//</svg>
+
+// <svg class="c-icon c-icon--toggle" aria-hidden="true">
+//     <use class="icon--arrowup" xlink:href="/assets/icons/symbols.svg#icon--arrowup"></use>
+//     <use class="icon--arrowdown" xlink:href="/assets/icons/symbols.svg#icon--arrowdown"></use>
+// </svg>
+
+// <svg class="c-icon c-icon--toggleAlt" aria-hidden="true">
+//     <use class="icon--arrowdown" xlink:href="/assets/icons/symbols.svg#icon--arrowdown"></use>
+// </svg>
+
+//<svg class="c-icon c-icon--warning" aria-hidden="true">
+//    <use class="icon" xlink:href="/assets/icons/symbols.svg#icon--warning"></use>
+//</svg>
+
+// VARIABLES
+// ----------------------------------------------------
+
+// BASE
+// ----------------------------------------------------
+
+.c-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    zoom: 1;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+// Sprite icon (with image)
+// .c-icon-sp {
+//     display: inline-block;
+//     @include size(44px);
+//     background-image: url('/assets/img/icon_sprite.png');
+//     background-position: 0 0;
+//     background-repeat: no-repeat;
+// }
+
+// .c-icon-sp--facebook {
+//     background-position: -10px -10px;
+// }
+
+// .c-icon-sp--googleplus {
+//     background-position: -74px -10px;
+// }
+
+.c-icon {
+    &.xs {
+        @include font-size($TYPE-SIZE-XS);
+    }
+
+    &.s {
+        @include font-size($TYPE-SIZE-S);
+    }
+
+    &.m {
+        @include font-size($TYPE-SIZE-M);
+    }
+
+    &.l {
+        @include font-size($TYPE-SIZE-L);
+    }
+
+    &.xl {
+        @include font-size($TYPE-SIZE-XL);
+    }
+
+    &.xxl {
+        @include font-size($TYPE-SIZE-XXL);
+    }
+
+    &.xxxl {
+        @include font-size($TYPE-SIZE-XXXL);
+    }
+
+    &.xxxxl {
+        @include font-size($TYPE-SIZE-XXXXL);
+    }
+}
+
+// VARIANTS
+// --------------------------------------
+
+// For inline icons (eg, emoji or use case for non-block level img)
+img[src$=".svg"].inline {
+    width: auto;
+}
+
+.c-icon--non-square-svg {
+    width: 1.2060546875em;
+}
+
+.c-icon--different-height-svg {
+    width: 100%;
+    // height: 100%;
+    min-height: 180px;
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

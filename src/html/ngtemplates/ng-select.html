@@ -1,0 +1,47 @@
+<fieldset class="c-angSelect" data-ng-class="{focus: Focus}">
+    <div class="c-angSelect__output" data-ng-click="ToggleDropdown()">
+        <div>
+            <span data-ng-if="!Output.Value">{{ Placeholder }}</span>
+            <span aria-live="polite">{{ Selected.Value }}</span>
+        </div>
+        <button class="c-angSelect__btn"
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="{{Expanded ? 'true' : 'false'}}"
+            data-ng-click="Prevent($event)"
+            data-ng-keydown="KeyDown($event)"
+            data-ng-focus="AddFocus()"
+            data-ng-blur="RemoveFocus()">
+            <span class="vh">{{ Placeholder }}</span>
+
+            <div class="c-angSelect__icon">
+                <img src="../assets/img/drop-down-arrow.png" alt="">
+            </div>
+        </button>
+    </div>
+
+    <div class="c-angSelect__options"
+        data-ng-show="Expanded"
+        aria-labelledby="{{ GroupName }}"
+        aria-hidden="{{ Expanded ? 'false' : 'true' }}">
+
+        <div class="" data-ng-repeat="option in Options track by $index">
+            <input type="radio"
+                id="{{GroupName}}{{$index}}"
+                name="{{ GroupName }}"
+                class="vh c-angSelect__input"
+                value="{{ option.Value }}"
+                data-ng-model="Output.Value"
+                data-ng-checked="Output.Value == option.Value"
+            />
+            <label for="{{GroupName}}{{$index}}"
+                class="c-angSelect__option"
+                data-ng-click="ReturnFocus();">
+
+                <span>{{ option.Value }}</span>
+
+            </label>
+        </div>
+
+    </div>
+</fieldset>

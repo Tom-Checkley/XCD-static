@@ -1,0 +1,58 @@
+/// <reference path="../main.scss" />
+
+////
+/// MEDIA
+/// Source: http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+////
+
+@if $COMPONENT-MEDIA {
+
+    // BASE
+    // ----------------------------------------------------
+
+    .o-media {
+        @include margin(0, 0, $TYPE-LineHeight, 0);
+        @include clearfix;
+    }
+
+    .o-media__content {
+        @include haslayout;
+    }
+
+    .o-media__image {
+        float: left;
+
+        @include margin(0, $TYPE-FontSize, 0, 0);
+
+        .image {
+            display: block;
+        }
+    }
+
+    .o-media__image--alt {
+        float: right;
+
+        @include margin(0, 0, 0, $TYPE-FontSize);
+    }
+
+    // RESPONSIVE
+    // ----------------------------------------------------
+
+    @include media(screen, "<=small") {
+        .o-media__image--sm {
+            float: none;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            @include margin-bottom($TYPE-LineHeight);
+        }
+    }
+
+    @include media(screen, ">small", "<=medium") {
+        //
+    }
+
+    @include media(screen, ">large") {
+        //
+    }
+}

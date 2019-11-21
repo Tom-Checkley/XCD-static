@@ -1,0 +1,48 @@
+<div class="c-videoBox {{ Config.ExternalClass }}" data-ng-class="{ 'playing' : playing == true }">
+    <button data-ng-if="playing" class="c-button c-videoBox__close" data-ng-click="playPause()">
+        <span class="c-button__body">
+            <span class="c-button__text">X</span>
+        </span>
+        <span class="vh">Close video</span>
+    </button>
+
+    <div class="c-videoBox__video">
+        <div data-ng-if="playing">
+
+            <iframe id="ytplayer"
+                    class="c-videoBox__iframe"
+                    data-ng-src="{{ Model.VideoSrc }}"
+                    type="text/html"
+                    width="{{ Config.Width }}"
+                    height="{{ Config.Height }}"
+                    title="{{ Model.VideoTitle }}"
+                    frameborder="{{ Config.Frameborder }}"
+                    allow="{{ Config.Allow }}"
+                    allowfullscreen="{{ Config.Allowfullscreen }}">
+            </iframe>
+        </div>
+    </div>
+
+    <div data-ng-if="!playing">
+        <picture class="c-videoBox__picture">
+            <source type="image/webp" srcset="{{ Model.ImageSrcWebP }}, 1920w" sizes="100vw">
+            <source srcset="{{ Model.ImageSrc }} 1920w" sizes="100vw">
+            <img src="{{ Model.imageSrc }}" alt="{{ Model.ImageAlt }}">
+        </picture>
+    
+
+        <div class="videoBox__content">
+            <h2>
+                <span data-ng-if="Model.BoxTitle" data-ng-bind-html="Model.BoxTitle"></span>
+            </h2>
+            <p data-ng-if="Model.boxText" data-ng-bind-html="Model.boxText"></p>
+
+            <button class="c-button c-videoBox__playButton" data-ng-click="playPause()">
+                <img data-ng-if="Model.PlayBtnImg" data-ng-src="{{ Model.PlayButtonImage }}" alt="Play video">
+                <span class="vh">Click to play video</span>
+            </button>
+            <p data-ng-if="Model.VideoRunTime">{{ Model.VideoRunTime }}</p>
+        </div>
+    </div>
+
+</div>

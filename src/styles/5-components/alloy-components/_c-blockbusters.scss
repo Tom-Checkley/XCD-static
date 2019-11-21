@@ -1,0 +1,88 @@
+/// <reference path="../main.scss" />
+
+////
+/// SVG Shape Masking - images
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+:root {
+    --hex-gap: 6px;// Must have a unit to work within a calc
+    // 120 x 104 are dimensions of svg polygon
+    --hex-height: 12vw;
+    --hex-width: var(--hex-height) * (120 / 104);
+    --hex-triangle: var(--hex-width) * -0.25;
+    --hex-offset-x: calc(var(--hex-width) + var(--hex-triangle));
+    --hex-offset-y: calc((var(--hex-height) + var(--hex-gap)) / 2);
+
+    //
+    --hex-offset-x2: calc((var(--hex-triangle)) + (var(--hex-gap) / 2));
+    --hex-offset-y2: calc((var(--hex-height) / -2));
+}
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-blockbusters {
+    display: block;
+    @include clearfix();
+
+    @supports (display: $SUPPORTS-grid) {
+        display: grid;
+        grid-template-columns: repeat(5, var(--hex-offset-x));
+        grid-template-rows: repeat(2, var(--hex-height));
+        grid-gap: var(--hex-gap);
+        @include unclearfix();
+    }
+
+    transform: rotate(12.5deg);
+    transform-origin: center center;
+    margin-bottom: var(--hex-offset-y);
+}
+
+// Images are laid out in HTML order
+
+.c-please-bob {
+    display: block;
+    width: calc(var(--hex-width));
+    height: var(--hex-height);
+    margin-right: var(--hex-offset-x2);
+    margin-bottom: var(--hex-offset-y2);
+
+    // Non-grid Fallback
+    float: left;
+
+    &:nth-child(6) {
+        clear: left;
+    }
+    // End fallback
+
+    // First four and odd
+    &:nth-child(-n+5):nth-child(odd) {
+        margin-top: var(--hex-offset-y);
+    }
+
+    // Beyond fifth and even
+    &:nth-child(n+6):nth-child(even) {
+        margin-top: var(--hex-offset-y);
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

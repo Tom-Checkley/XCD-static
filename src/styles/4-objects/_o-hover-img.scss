@@ -1,0 +1,45 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_HOVER-IMG
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+// TODO - Change these when there is site wide animation styles
+
+$BG-IMG-TransitionTime:     0.3s;
+$BG-IMG-TransitionCurve:    ease-in-out;
+
+/// BASE
+/// ----------------------------------------------------
+
+// Used with angular directive that switches bg-img depending where you hover.
+
+.o-hover-img {
+    position: static;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    transition: background-image $BG-IMG-TransitionTime $BG-IMG-TransitionCurve;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

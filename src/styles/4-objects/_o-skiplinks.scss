@@ -1,0 +1,51 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_SKIPLINKS
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+$SKIPLINKS-bg:                      $COLOR-White;
+$SKIPLINKS-color:                   $COLOR-Black;
+
+/// BASE
+/// ----------------------------------------------------
+
+.o-skiplinks {
+    a {
+        position: absolute;
+        left: -1000em;
+        background-color: $SKIPLINKS-bg;
+        color: $SKIPLINKS-color;
+        padding: 20px 30px;
+        max-width: calc(100vw - 40px);
+        z-index: $Z-INDEX-Level7 + 1;
+
+        &:active,
+        &:focus {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

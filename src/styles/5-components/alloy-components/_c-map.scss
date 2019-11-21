@@ -1,0 +1,36 @@
+/// <reference path="../main.scss" />
+
+////
+/// TEMPLATE
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$C-MAP-Height:      400;
+$C-MAP-Width:       100%;
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-map {
+    height: rem($C-MAP-Height);
+    width: $C-MAP-Width;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

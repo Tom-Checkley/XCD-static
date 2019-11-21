@@ -1,0 +1,114 @@
+<div class="o-n">
+    <div class="o-n__container">
+        <a href="/">
+            <svg class="c-logo c-logo--header" aria-hidden="true" focusable="false">
+                <use class="" xlink:href="/assets/img/symbols.svg#logo"></use>
+            </svg>
+        </a>
+        <nav id="navigation" role="navigation" aria-label="Main Menu" class="o-n__list" data-ng-class="{'nav-active': navActive}">
+            <div class="o-n__mob-header">
+                <svg class="c-logo c-logo--header" aria-hidden="true" focusable="false">
+                    <use class="" xlink:href="/assets/img/symbols.svg#logo"></use>
+                </svg>
+                <button class="c-button c-button--inline">
+                    <span class="c-button__body" data-ng-click="navActive = false">
+                        <span class="vh">Close menu</span>
+                        <i style="color: white; font-style: normal;">&times;</i>
+                    </span>
+                </button>
+            </div>
+            <ul class="o-l o-l--nav">
+                <li class="o-n__item">
+                    <a href="/why" class="o-n__link">Why XCD?</a>
+                </li>
+
+                <li class="o-n__item" data-ng-init="subNavActive1 = false" data-ng-class="{active: subNavActive1}">
+                    <button class="c-button  c-button--nav o-n__link" aria-expanded="false" aria-controls="sectorsSubnav" data-ng-click="subNavActive1 = !subNavActive1">
+                        <span class="c-button__body">
+                            <span class="c-button__text">Solutions</span>
+                            <svg class="c-icon" aria-hidden="true" focusable="false">
+                                <use xlink:href="/assets/img/symbols.svg#icon--arrowdown"></use>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="o-n__subcontainer" id="sectorsSubnav">
+                        <ul class="o-l o-n__sublist">
+                            <li class="o-l__item o-n__item">
+                                <a href="#" class="o-n__link">Link</a>
+                            </li>
+                            <li class="o-l__item o-n__item">
+                                <a href="#" class="o-n__link">Public sector</a>
+                            </li>
+                            <li class="o-l__item o-n__item">
+                                <a href="#" class="o-n__link">A really really long link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="o-n__item" data-ng-init="subNavActive2 = false" data-ng-class="{active: subNavActive2}">
+                    <button class="c-button  c-button--nav o-n__link" aria-expanded="false" aria-controls="sectorsSubnav" data-ng-click="subNavActive2 = !subNavActive2">
+                        <span class="c-button__body">
+                            <span class="c-button__text">Sectors</span>
+                            <svg class="c-icon" aria-hidden="true" focusable="false">
+                                <use xlink:href="/assets/img/symbols.svg#icon--arrowdown"></use>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div class="o-n__subcontainer" id="sectorsSubnav">
+                        <ul class="o-l o-n__sublist">
+                            <li class="o-l__item o-n__item">
+                                <a href="#" class="o-n__link">Link</a>
+                            </li>
+                            <li class="o-l__item o-n__item">
+                                <a href="#" class="o-n__link">Public sector</a>
+                            </li>
+                            <li class="o-l__item o-n__item">
+                                <a href="#" class="o-n__link">A really really long link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="o-n__item">
+                    <a href="/insights" class="o-n__link">Insights</a>
+                </li>
+
+                <li class="o-n__item">
+                    <a href="/about" class="o-n__link">About</a>
+                </li>
+
+                <li class="o-n__item">
+                    <a href="/contact" class="o-n__link">Get in touch</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="o-n__actions">
+       
+        <ul class="o-l o-l--h o-l--nav o-n__list">
+            <li class="o-n__item">
+                <a href="/customer-portal" class="o-n__link">Customer Portal</a>
+            </li>
+            <li class="o-n__item">
+                <a href="/why" class="c-button c-button--appointment">
+                    <span class="c-button__body">
+                        <span class="c-button__text">Request Demo</span>
+                        <svg class="c-icon" aria-hidden="true" focusable="false">
+                            <use xlink:href="/assets/img/symbols.svg#icon--arrowdown"></use>
+                        </svg>
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <div class="o-n__nav-btn">
+            <button class="c-button c-button--inline">
+                <span class="c-button__body" data-ng-click="navActive = true">
+                    <span class="vh">Menu</span>
+                    <i>&#9776;</i>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+/// <reference path="../main.scss" />
+
+////
+/// FONT LOADER - DESIGN LANGUAGE
+/// @TODO: make this closer to Filament Group
+/// @link https://www.filamentgroup.com/lab/font-events.html
+////
+
+// VARIABLES
+// ----------------------------------------------------
+$FONTLOADER-Class:                 ".fonts-loaded" !default;
+
+$FONTLOADER-FontFamily:            'Raleway', $TYPE-FontFamily;
+$FONTLOADER-AltFontFamily:         'Lato', $TYPE-AltFontFamily;
+$FONTLOADER-HeadingsFontFamily:    'Lato', $TYPE-HeadingsFontFamily;
+$FONTLOADER-HeadingsAltFontFamily: 'Raleway', $TYPE-HeadingsAltFontFamily;
+
+// If using Google Fonts as a source - get fonts via https://google-webfonts-helper.herokuapp.com
+// Only need support for 'modern web browsers'
+// FontSquirrel can mess up some of the font rendering when converting to WOFFx (Google Fonts has done in the past too, but seems to be more reliable conversion to date)
+// Don't forget to add/re-add "font-display: swap" to generated code, and update the font path
+
+@if $SYSTEM-FONTLOADER {
+    body#{$FONTLOADER-Class} {
+        font-family: $FONTLOADER-FontFamily;
+    }
+
+    // FONT FACES
+    // ----------------------------------------------------
+
+    /* raleway-regular - latin */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Raleway'), local('Raleway-Regular'),
+         url('#{$PATH-Fonts}/raleway-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('#{$PATH-Fonts}/raleway-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* raleway-700 - latin */
+  @font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Raleway Bold'), local('Raleway-Bold'),
+         url('#{$PATH-Fonts}/raleway-v14-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('#{$PATH-Fonts}/raleway-v14-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* lato-regular - latin */
+    @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Lato Regular'), local('Lato-Regular'),
+         url('#{$PATH-Fonts}/lato-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('#{$PATH-Fonts}/lato-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* lato-700 - latin */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Lato Bold'), local('Lato-Bold'),
+         url('#{$PATH-Fonts}/lato-v16-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('#{$PATH-Fonts}/lato-v16-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* lato-900 - latin */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: local('Lato Black'), local('Lato-Black'),
+         url('#{$PATH-Fonts}/lato-v16-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('#{$PATH-Fonts}/lato-v16-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+}

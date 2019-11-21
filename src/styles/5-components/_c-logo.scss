@@ -1,0 +1,44 @@
+/// <reference path="../main.scss" />
+
+////
+/// TEMPLATE
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-logo {
+    @include margin-left(10);
+}
+
+.c-logo--header {
+    font-size: 7rem;
+    @include media(screen, ">menu-large") {
+        font-size: 10rem;
+    }
+    @include media(screen, ">menu-xlarge") {
+        font-size: 12rem;
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

@@ -1,0 +1,55 @@
+/// <reference path="../main.scss" />
+
+////
+/// TEMPLATE
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+// --COLOR-Primary
+// --COLOR-Secondary
+// --COLOR-Tertiary
+// --COLOR-Accent
+// --COLOR-Base
+// --COLOR-BaseLight
+// --COLOR-BaseDark
+// --TYPE-FontSize
+// --TYPE-LineHeight
+// --TYPE-SIZE-XXXXL
+// --TYPE-SIZE-XXXL
+// --TYPE-SIZE-XXL
+// --TYPE-SIZE-XL
+// --TYPE-SIZE-L
+// --TYPE-SIZE-M
+// --TYPE-SIZE-S
+// --TYPE-SIZE-XS
+// --TYPE-SIZE-XXS
+// --TYPE-FontColor
+// --TYPE-AltFontColor
+// --TYPE-HeadingsColor
+// --TYPE-HeadingsAltColor
+
+/// BASE
+/// ----------------------------------------------------
+
+.template {
+    //
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

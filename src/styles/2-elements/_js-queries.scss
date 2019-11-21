@@ -1,0 +1,126 @@
+/// <reference path="../main.scss" />
+
+////
+/// JS-MEDIAQUERY
+////
+
+/// INTERSECTION OBSERVER
+/// ----------------------------------------------------
+
+// Used by IntersectionObserver to change the header to "stuck"
+#js-obs1 {
+    position: absolute;
+    top: 160px;
+    left: 0;
+    height: 100px;
+    width: 1px;
+}
+
+/// SMOOTH SCROLL
+/// ----------------------------------------------------
+
+// Native smooth scroll on the whole page
+:root {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+/// Media Query hooks for Javascript
+/// ----------------------------------------------------
+
+// These are obsolete with minimal project requirements of >=IE11
+// Use matchMedia()
+// IE10 has some support, but requires a fallback for addeventlistener.
+
+// We use display:none to not show the "::after" text,
+// however, some browsers won't show any change at all,
+// which is why we cause a tiny transition on it's width
+// which forces the browser to recalculate the value.
+
+// #mq_page,
+// #mq_menu {
+//     width: 0;
+//     transition: width 0.001s;
+
+//     &::after {
+//         content: "xsdefault";
+//         display: none;
+//     }
+// }
+
+// @each $name, $value in $breakpoints {
+//     // Work out correct em value for media query
+//     $em-value: em($value);
+
+//     // Replace the hyphen to match the media name in js
+//     $jsname: str-replace($name, "-", "");
+
+//     // A different width for each (Index * width)
+//     $i: index(($breakpoints), ($name $value));
+
+//     @if str-index($name, 'menu-') != 1 {
+//         #mq_page {
+//             @include media(screen, ">#{$name}") {
+//                 width: ($i * 20px);
+
+//                 &::after {
+//                     content: "#{$jsname}";
+//                 }
+//             }
+//         }
+//     }
+
+//     @else {
+//         #mq_menu {
+//             @include media(screen, ">#{$name}") {
+//                 width: ($i * 20px);
+
+//                 &::after {
+//                     content: "#{$jsname}";
+//                 }
+//             }
+//         }
+//     }
+// }
+
+/// TARGET OFFSET
+/// ----------------------------------------------------
+
+// This does work, but due to the CSS `:target` property doesn't attach itself robustly
+// to elements (it modifies the pseudo elements display property) so it's best
+// accomplished with JS. As JS can also use matchMedia() to correctly calculate elements at different media sizes (a menu offset on mobile might be different to tablet, different to desktop).
+
+$O_TARGET-fix-md:        $TARGET-fix-md;
+$O_TARGET-fix-lg:        $TARGET-fix-lg;
+
+// This prevents #achor scroll position from being obscurred by a position:fixed / position:sticky element (eg, header)
+// Or you can intercept with fancy JS
+// :target {
+
+//     // TECHNIQUE 1
+
+//     // This technique doesn't always work...
+//     // &::before {
+//     //     content: "";
+//     //     display: inline-block; // inline-block might be better if it's attached to a display:block parent element
+//     //     height: $O_TARGET-fix-md;//px2rem($O_TARGET-fix-md);
+//     //     @include margin(-$O_TARGET-fix-md, 0, 0);
+
+//     //     @include media(screen, ">menu-large") {
+//     //         height: $O_TARGET-fix-lg;//px2rem($O_TARGET-fix-lg);
+//     //         @include margin(-$O_TARGET-fix-lg, 0, 0);
+//     //     }
+//     // }
+
+//     // TECHNIQUE 2
+
+//     // This technique seems more consistently reliable - except with form inputs, where it conflicts with margin
+//     background-clip: padding-box;
+//     border-top: px2rem($O_TARGET-fix-md) solid transparent;
+//     @include margin(-$O_TARGET-fix-md, 0, 0);
+
+//     @include media(screen, ">menu-large") {
+//         border-top-width: px2rem($O_TARGET-fix-lg);
+//         @include margin(-$O_TARGET-fix-lg, 0, 0);
+//     }
+// }

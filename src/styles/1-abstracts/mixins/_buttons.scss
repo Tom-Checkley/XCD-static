@@ -1,0 +1,82 @@
+/// <reference path="../../main.scss" />
+////
+/// BUTTONS
+////
+
+/// Generate custom button
+/// Has a span element inside
+/// @example
+///   div {
+///     @include button-create($bg, $bg_active, $text, $text_active, $InnerElement: ".c-custom__element-name");
+///   }
+
+@mixin button-create(
+    // Background
+    $Bg,
+    $BgHover,
+
+    // Text
+    $TextColor: contrast-color($Bg),
+    $TextHoverColor: $TextColor,
+    $decoration: null,
+    $HoverDecoration: null,
+
+    // Visited and focus will assume same as link and hover respectively
+    $visited: null,
+    $focus: null,
+
+    $BgActiveColor: $BgHover,
+    $TextActiveColor: $TextHoverColor,
+    $BorderColor: null,
+    $BorderHoverColor: null,
+    $BorderWidth: 1,
+    $InnerElement: "span") {
+
+    //
+    background-color: $Bg;
+    color: $TextColor;
+    text-decoration: $decoration;
+
+    // Only add a border if border-colour is specified
+    @if $BorderColor {
+        border: ($BorderWidth * 1px) solid $BorderColor;
+        padding: 0;
+    }
+
+    &:link,
+    &:visited {
+        color: $TextColor;
+    }
+
+    &:visited {
+        color: $visited;
+    }
+
+    #{$InnerElement} {
+        background-color: $Bg;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $TextHoverColor;
+        text-decoration: $HoverDecoration;
+        border-color: $BorderHoverColor;
+
+        > #{$InnerElement} {
+            background-color: $BgHover;
+        }
+    }
+
+    &:focus {
+        color: $focus;
+    }
+
+    &:active {
+        color: $TextActiveColor;
+
+        > #{$InnerElement} {
+            background-color: $BgActiveColor;
+        }
+    }
+}

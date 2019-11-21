@@ -1,0 +1,80 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_BUTTONIMG
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$C_BUTTONIMG-color:            $COLOR-White;
+$C_BUTTONIMG-bg:               $COLOR-Primary;
+$C_BUTTONIMG-padding:          12px;
+$C_BUTTONIMG-offset:           10px 15px;
+
+/// BASE
+/// ----------------------------------------------------
+
+@mixin c_buttonimg (
+    $text-color:        $C_BUTTONIMG-color,
+    $bg-color:          $C_BUTTONIMG-bg,
+    $padding:           $C_BUTTONIMG-padding,
+    $offset:            $C_BUTTONIMG-offset
+) {
+    appearance: none;
+    display: inline-block;
+    border: none;
+    padding: $padding;
+    text-transform: uppercase;
+    background-color: $bg-color;
+    @include link-custom($text-color, none, $text-color, none);
+    @include font-family($TYPE-FontFamily, $FONTLOADER-FontFamily, 700);
+
+    .c-buttonImg__text {
+        display: block;
+        padding: $offset;
+        background-color: transparent;
+        margin: -$padding;
+    }
+}
+
+.c-buttonImg {
+    @include c_buttonimg($bg-color: #ff0000, $offset: 10px 15px);
+    background-clip: content-box;
+
+    .c-buttonImg__text {
+        display: block;
+        background-image: url(/components/buttonimg/img/button-clipped.png);
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        padding: 10px 15px;
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+.c-buttonImg--eg-contentbox {
+    background-clip: border-box;
+}
+
+.c-buttonImg--eg-fallback-bg-color {
+    .c-buttonImg__text {
+        background-image: none;
+    }
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

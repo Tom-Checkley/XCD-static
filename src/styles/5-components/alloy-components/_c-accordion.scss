@@ -1,0 +1,119 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_ACCORDION
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+$C_ACCORDION-head-bg:              $COLOR-GreyLightest;
+$C_ACCORDION-head-text:            $COLOR-Grey;
+$C_ACCORDION-head-bg-active:       $COLOR-GreyLightest;
+$C_ACCORDION-head-text-active:     $COLOR-GreyDarker;
+$C_ACCORDION-head-border:          1px solid $COLOR-GreyLighter;
+$C_ACCORDION-head-border-active:   $COLOR-GreyDarker;
+$C_ACCORDION-head-padding:         5px 10px;
+
+$C_ACCORDION-body-bg:              $COLOR-YellowLightest;
+$C_ACCORDION-body-text:            $COLOR-GreyDarker;
+$C_ACCORDION-body-border:          1px solid $COLOR-GreyDarker;
+$C_ACCORDION-body-padding:         $C_ACCORDION-head-padding;
+
+$C_ACCORDION-icon-width:           50px;
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-accordion {
+}
+
+.c-accordion__item {
+    @include margin-bottom($TYPE-LineHeight /2);
+}
+
+.c-accordion__head {
+    border: $C_ACCORDION-head-border;
+
+    &[aria-expanded="true"] {
+        border-color: $C_ACCORDION-head-border-active;
+    }
+}
+
+.c-accordion__title {
+    @include font-size($TYPE-SIZE-XL);
+    @include margin(0);
+}
+
+.c-accordion__button {
+    appearance: none;
+    padding: 0;
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    @include button-create($C_ACCORDION-head-bg, $C_ACCORDION-head-bg-active, $C_ACCORDION-head-text, $C_ACCORDION-head-text-active, $InnerElement: ".c-accordion__buttontext");
+}
+
+.c-accordion__buttontext {
+    flex: 1 0 calc(100% - #{$C_ACCORDION-icon-width});
+    width: calc(100% - #{$C_ACCORDION-icon-width});
+    text-align: left;
+    padding: $C_ACCORDION-head-padding;
+}
+
+.c-accordion__panel {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.25s ease-in-out;
+
+    &.active {
+        height: 100%;
+        // overflow: auto;
+    }
+}
+
+.c-accordion__body {
+    padding: $C_ACCORDION-body-padding;
+    border: $C_ACCORDION-body-border;
+    border-top: none;
+    background-color: $C_ACCORDION-body-bg;
+    color: $C_ACCORDION-body-text;
+}
+
+.c-icon--accordionToggle {
+    display: inline-block;
+    flex: 0 0 #{$C_ACCORDION-icon-width};
+    width: #{$C_ACCORDION-icon-width};
+
+    // Either use two icons and switch between, or one and a CSS transition
+    .c-accordion__head[aria-expanded="false"] & {
+        .c-icon--up {
+            display: none;
+        }
+    }
+
+    .c-accordion__head[aria-expanded="true"] & {
+        .c-icon--down {
+            display: none;
+        }
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

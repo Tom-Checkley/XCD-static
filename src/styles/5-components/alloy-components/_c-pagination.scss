@@ -1,0 +1,99 @@
+/// <reference path="../main.scss" />
+
+////
+/// C_PGN
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+// Must use accessible colours
+// Default pagination item
+$C_PGN-default-bg:                  $COLOR-GreyLighter;
+$C_PGN-default-color:               contrast-threshold($C_PGN-default-bg, 4.5, $COLOR-GreyDark, $COLOR-GreyLightest);
+$C_PGN-default-hoverbg:             $COLOR-GreyDark;
+$C_PGN-default-hovercolor:          contrast-threshold($C_PGN-default-hoverbg, 4.5, $COLOR-GreyDark, $COLOR-GreyLightest);
+
+// Active page
+$C_PGN-active-bg:                   $COLOR-Blue;
+$C_PGN-active-color:                contrast-threshold($C_PGN-active-bg, 4.5, $COLOR-GreyDark, $COLOR-GreyLightest);
+$C_PGN-active-hoverbg:              $C_PGN-default-hoverbg;
+$C_PGN-active-hovercolor:           $C_PGN-default-hovercolor;
+
+// To previous/next
+$C_PGN-page-bg:                     $COLOR-Green;
+$C_PGN-page-color:                  contrast-threshold($C_PGN-page-bg, 4.5, $COLOR-GreyDark, $COLOR-GreyLightest);
+$C_PGN-page-hoverbg:                $C_PGN-default-hoverbg;
+$C_PGN-page-hovercolor:             $C_PGN-default-hovercolor;
+
+// To previous/next group (eg, first/last)
+$C_PGN-group-bg:                    $COLOR-IndigoLight;
+$C_PGN-group-color:                 contrast-threshold($C_PGN-group-bg, 4.5, $COLOR-GreyDark, $COLOR-GreyLightest);
+$C_PGN-group-hoverbg:               $C_PGN-default-hoverbg;
+$C_PGN-group-hovercolor:            $C_PGN-default-hovercolor;
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-pgn {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c-pgn__item {
+
+}
+
+.c-pgn__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-out;
+    @include size(50px);
+    @include link-custom($C_PGN-default-color, none, $C_PGN-default-hovercolor, none, $bg: $C_PGN-default-bg, $bghover: $C_PGN-default-hoverbg);
+}
+
+// VARIANTS
+// ----------------------------------------------------
+.c-pgn__item--is-active {
+    .c-pgn__link {
+        @include link-custom($C_PGN-active-color, none, $C_PGN-active-hovercolor, none, $bg: $C_PGN-active-bg, $bghover: $C_PGN-active-hoverbg);
+    }
+}
+
+.c-pgn__item--previous-group,
+.c-pgn__item--next-group {
+    .c-pgn__link {
+        @include link-custom($C_PGN-group-color, none, $C_PGN-group-hovercolor, none, $bg: $C_PGN-group-bg, $bghover: $C_PGN-group-hoverbg);
+    }
+}
+
+.c-pgn__item--previous-page,
+.c-pgn__item--next-page {
+    .c-pgn__link {
+        @include link-custom($C_PGN-page-color, none, $C_PGN-page-hovercolor, none, $bg: $C_PGN-page-bg, $bghover: $C_PGN-page-hoverbg);
+    }
+}
+
+.c-pgn--center {
+    justify-content: center;
+}
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

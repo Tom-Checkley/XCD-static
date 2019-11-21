@@ -1,0 +1,24 @@
+<label for="{{ id }}" class="o-f__fileInput">
+    <span class="o-f__label">{{label}}</span>
+    <input id="{{ id }}"
+        name="{{ name }}"
+        type="file"
+        class="vh"
+        data-custom-on-change="onChange"
+        data-ng-model="upload"
+        ng-focus="focused = true" 
+        ng-blur="focused = false">
+    
+    <div class="c-input c-input--file" ng-class="{'focus': focused}" aria-hidden="true">
+        <div class="c-input__button">Choose file</div>
+        <div class="c-input__selected" data-ng-if="!multiple">
+            <span data-ng-if="!files">No file selected</span>
+            <span data-ng-if="files" class="shortName">{{ selected }}</span>
+            <span data-ng-if="selected" class="fullName">{{ selectedFull }}</span>
+        </div>
+        <div class="c-input__selected" data-ng-if="multiple">
+            <span data-ng-if="!files">No file selected</span>
+            <span data-ng-if="files" class="fullName">{{ fileNames[0] }}<span data-ng-if="fileNames.length - 1 > 0"> + {{ fileNames.length - 1 }} others</span></span>
+        </div>
+    </div>
+</label>

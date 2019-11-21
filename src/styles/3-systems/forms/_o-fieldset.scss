@@ -1,0 +1,43 @@
+/// <reference path="../main.scss" />
+
+////
+/// O_FIELDSET
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+/// BASE
+/// ----------------------------------------------------
+
+.o-fieldset {
+    border: none;
+    @include margin-x(0);
+    @include padding(0);
+}
+
+.o-fieldset__legend {
+
+}
+
+.o-fieldset__heading {
+    margin: 0;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}
