@@ -1,0 +1,70 @@
+/**
+ * RESPONSIVE PADDING
+ */
+@mixin responsivePadding-y(
+    $sm: $PADDING-Y-SM,
+    $md: $PADDING-Y-MD,
+    $lg: $PADDING-Y-LG,
+    $gridmax: $PADDING-Y-GRIDMAX,
+    $lgr: $PADDING-Y-XLG
+) {
+    @include padding-y($sm);
+
+    @if $md {
+        @include media(screen, ">medium") {
+            @include padding-y($md);
+        }
+    }
+
+    @if $lg {
+        @include media(screen, ">large") {
+            @include padding-y($lg)
+        }
+    }
+
+    @if $gridmax {
+        @include media(screen, ">gridmax") {
+            @include padding-y($gridmax);
+        }
+    }
+
+    @if $lgr {
+        @include media(screen, ">larger") {
+            @include padding-y($lgr);
+        }
+    }
+}
+
+@mixin responsivePadding-x(
+    $sm: $PADDING-X-SM,
+    $md: $PADDING-X-MD,
+    $lg: $PADDING-X-LG,
+    $gridmax: $PADDING-X-GRIDMAX,
+    $lgr: $PADDING-X-XLG
+) {
+    @include padding-x($sm);
+
+    @if $md {
+        @include media(screen, ">medium") {
+            @include padding-x($md);
+        }
+    }
+
+    @if $lg {
+        @include media(screen, ">large") {
+            @include padding-x($lg)
+        }
+    }
+
+    @if $gridmax {
+        @include media(screen, ">gridmax") {
+            @include padding-x($gridmax);
+        }
+    }
+
+    @if $lgr {
+        @include media(screen, ">larger") {
+            @include padding-x($lgr);
+        }
+    }
+}

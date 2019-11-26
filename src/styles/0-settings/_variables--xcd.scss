@@ -76,6 +76,20 @@ $TYPE-SIZE-S:                   16;// S Zeta
 $TYPE-SIZE-XS:                  14;// XS Eta
 $TYPE-SIZE-XXS:                 12;// XXS Iota
 
+// SPACING
+// ----------------------------------------------------
+$PADDING-Y-SM:                  10;
+$PADDING-Y-MD:                  20;
+$PADDING-Y-LG:                  40;
+$PADDING-Y-XLG:                 null;
+$PADDING-Y-GRIDMAX:             40;
+
+$PADDING-X-SM:                  10;
+$PADDING-X-MD:                  20;
+$PADDING-X-LG:                  90;
+$PADDING-X-XLG:                 null;
+$PADDING-X-GRIDMAX:             20;
+
 // LINKS
 // ----------------------------------------------------
 $STYLE-LinkColor-Link:              $COLOR-XCD-Green;
@@ -138,11 +152,11 @@ $NAV-Height--FullScreen:        150px;
 // ----------------------------------------------------
 $GRID-MaxWidth:                 1580;
 
-$GRID-GutterWidth:              24;
-$GRID-GutterWidth-Md:           18;
+$GRID-GutterWidth:              20;
+$GRID-GutterWidth-Md:           30;
 $GRID-GutterWidth-Sm:           12;
-$GRID-GutterWidth-Lg:           50 - $GRID-GutterWidth;
-$GRID-GutterWidth-Xl:           50;
+$GRID-GutterWidth-Lg:           40;
+$GRID-GutterWidth-Xl:           60;
 
 $GRID-GutterHeight:             $GRID-GutterWidth;
 $GRID-GutterHeight-Md:          $GRID-GutterWidth-Md;
@@ -171,7 +185,7 @@ $breakpoints: im-to-em(
         'small': 600px,
         'medium': 800px,
         'large': 980px,
-        'larger': 1380px,
+        'larger': 1270px,
         'gridmax': $GRID-MaxWidth * 1px,
         'largest': 1900px,
         'menu-small': 834px,

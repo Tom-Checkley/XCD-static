@@ -34,6 +34,8 @@ $GRID-2COL-Horizontal-Gap:      20px;
     }
 }
 
+
+
 /// BASE
 /// ----------------------------------------------------
 .o-g {
@@ -47,17 +49,34 @@ $GRID-2COL-Horizontal-Gap:      20px;
 
     @supports (display: $SUPPORTS-grid) {
         display: grid;
+        grid-template-columns: auto;
+        gap: rem($GRID-GutterHeight) rem($GRID-GutterWidth);
+
+        @include media(screen, ">medium") {
+            gap: rem($GRID-GutterHeight-Md) rem($GRID-GutterWidth-Md);
+        }
+
+        @include media(screen, ">large") {
+            gap: rem($GRID-GutterHeight-Xl) rem($GRID-GutterWidth-Xl);
+        }
+    }
+}
+
+// VARIANTS
+// ----------------------------------------------------
+.o-g--section {
+    gap: 0;
+}
+
+.o-g--2col-equal {
+    @include gridgap;
+    @supports(display: $SUPPORTS-grid) {
         grid-template-areas:
             "head"
             "body"
             "body2"
             "media"
             "actions";
-        grid-template-columns: auto;
-        gap: $GRID-Horizontal-Gap $GRID-Vertical-Gap;
-    }
-
-    &--2col {
         @include media(screen, ">large") {
             grid-template-areas:
                 "head       media"
@@ -67,46 +86,218 @@ $GRID-2COL-Horizontal-Gap:      20px;
             grid-template-columns: 1fr 1fr;
             gap: $GRID-2COL-Horizontal-Gap $GRID-2COL-Vertical-Gap;
         }
-    }
+        > .o-g__head {
+            grid-area: head;
+        }
 
-    > .o-g__head {
-        grid-area: head;
-    }
-
-    > .o-g__body {
-        grid-area: body;
-    }
-
-    > .o-g__nav {
-        grid-area: nav;
-    }
-
-    > .o-g__media {
-        grid-area: media;
-    }
-
-    > .o-g__actions {
-        grid-area: actions;
-    }
-
-    > .o-g__secondary {
-        grid-area: secondary;
-    }
-
-    > .o-g__foot {
-        grid-area: foot;
-    }
-
-    > .o-g__aside {
-        grid-area: aside;
-    }
-
-    // VARIANTS
-    // ----------------------------------------------------
+        > .o-g__body {
+            grid-area: body;
+        }
     
+        > .o-g__media {
+            grid-area: media;
+        }
+    
+        > .o-g__actions {
+            grid-area: actions;
+            align-self: end;
+        }
+
+        // > .o-g__secondary {
+        //     grid-area: secondary;
+        // }
+
+        // > .o-g__foot {
+        //     grid-area: foot;
+        // }
+
+        // > .o-g__aside {
+        //     grid-area: aside;
+        // }
+    }
 }
 
+.o-g--3col-equal {
+    @include gridgap;
 
+    @include media(screen, ">medium", "<=larger") {
+        > [class^='o-g__'] {
+            max-width: percentage(1/2);
+        }
+    }
+
+    @include media(screen, ">larger") {
+        > [class^='o-g__'] {
+            max-width: percentage(1/3);
+        }
+    }
+
+    @supports(display: grid) {
+        > [class^='o-g__'] {
+            max-width: unset;
+        }
+
+        grid-template-areas: '.';
+
+        @include media(screen, ">medium", "<=larger") {
+            grid-template-columns: repeat(2, 1fr);
+            gap: rem($GRID-GutterWidth-Md);
+        }
+
+        @include media(screen, ">larger") {
+            grid-template-columns: repeat(3, 1fr);
+            gap: rem($GRID-GutterWidth-Xl);
+        }
+    }
+}
+
+.o-g--why {
+    @include gridgap;
+
+    @supports(display: grid) {
+        grid-template-areas: 
+            "head"
+            "body"
+            "actions";
+        .o-g__actions {
+            display: grid;
+            place-content: center;
+        }
+    }
+}
+
+.o-g--products {
+    @supports (display: $SUPPORTS-grid) {
+        grid-template-areas:
+            "head"
+            "body"
+            "media";
+
+        & > .o-g__head {
+            grid-area: head;
+        }
+
+        & > .o-g__body {
+            grid-area: body;
+        }
+    }
+}
+
+.o-g--2col-products {
+    @supports (display: $SUPPORTS-grid) {
+        grid-template-areas: 
+            "media"
+            "stats"
+            "cards";
+        gap: $GRID-2COL-Horizontal-Gap / 2;
+
+        @include media(screen, ">medium") {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto ;
+            grid-template-areas: 
+                "cards  media"
+                // "cards  media"
+                "cards  stats";
+            gap: $GRID-2COL-Vertical-Gap;
+        }
+
+        & > .o-g__cards {
+            grid-area: cards;
+        }
+
+        & > .o-g__media {
+            grid-area: media;
+        }
+
+        & > .o-g__stats {
+            grid-area: stats;
+        }
+    }
+}
+
+.o-g--card {
+    @include gridgap;
+
+    @supports(display: grid) {
+        grid-template-columns: minmax(70px, 115px) 1fr;
+        grid-template-areas: 
+            "media  head"
+            "media  body";
+        gap: 20px;
+
+        > .o-g__head {
+            grid-area: head;
+        }
+
+        > .o-g__body {
+            grid-area: body;
+        }
+
+        > .o-g__media {
+            grid-area: media
+        }
+    }
+}
+
+.o-g--stats {
+    @supports (display: $SUPPORTS-grid) {
+        grid-template-columns: repeat(2, 1fr);
+
+        @include media(screen, ">medium") {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+
+.o-g--casestudy {
+    @supports (display: $SUPPORTS-grid) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "media"
+            "head"
+            "body"
+            "body2"
+            "actions";
+        @include media(screen, ">medium") {
+            grid-template-columns: repeat(2, 1fr);
+            gap: rem($GRID-GutterWidth-Lg) rem($GRID-GutterWidth-Xl);
+            grid-template-areas: 
+                "media  head"
+                "media  body"
+                "media  body2"
+                "media  actions";
+
+            &.rtl {
+                grid-template-areas: 
+                    "head       media"
+                    "body       media"
+                    "body2      media"
+                    "actions    media";
+            }
+        }
+
+        > .o-g__head {
+            grid-area: head;
+        }
+
+        > .o-g__body {
+            grid-area: body;
+        }
+
+        > .o-g__body2 {
+            grid-area: body2;
+        }
+
+        > .o-g__media {
+            grid-area: media;
+        }
+
+        > .o-g__actions {
+            grid-area: actions;
+            align-self: end;
+        }
+    }
+}
 
 
 // RESPONSIVE

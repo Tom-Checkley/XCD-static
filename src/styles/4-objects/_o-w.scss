@@ -18,33 +18,12 @@
     width: 100%;
     max-width: em($GRID-MaxWidth);
 
-    @include padding-x(10);
-
-    @include media(screen, ">small") {
-        @include padding-x(20);
-    }
-
-    @include media(screen, ">large") {
-        @include padding-x(90);
-    }
-
-    @include media(screen, ">gridmax") {
-        @include padding-x(20);
-    }
+    @include responsivePadding-x;
+    @include responsivePadding-y;
 
     .o-w {
-        @include padding-x(0);
-
-        @include media(screen, ">small") {
-            @include padding-x(0);
-        }
-        @include media(screen, ">large") {
-            @include padding-x(0);
-        }
-    
-        @include media(screen, ">gridmax") {
-            @include padding-x(0);
-        }
+        @include responsivePadding-x(0, 0, 0, 0, 0);
+        @include responsivePadding-y(0, 0, 0, 0, 0);
     }
 }
 

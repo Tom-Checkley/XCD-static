@@ -1,0 +1,52 @@
+/// <reference path="../main.scss" />
+
+////
+/// TEMPLATE
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+$STAT-FontWeight:   700;
+
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-stat {
+    text-transform: uppercase;
+    display: flex;
+    flex-flow: row wrap;
+
+    & > * {
+        width: 100%;
+    }
+}
+
+.c-stat__number {
+    @include font-family($TYPE-HeadingsFontFamily, $FONTLOADER-HeadingsFontFamily, $STAT-FontWeight);
+    @include font-size-heading($TYPE-SIZE-XXL, $TYPE-HeadingsLineHeight);
+    color: $COLOR-XCD-Blue;
+}
+
+.c-stat__text {
+    font-weight: $STAT-FontWeight;
+    color: $COLOR-White;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

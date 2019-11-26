@@ -1,0 +1,43 @@
+/// <reference path="../main.scss" />
+
+////
+/// C-CARD
+////
+
+/// VARIABLES
+/// ----------------------------------------------------
+
+
+/// BASE
+/// ----------------------------------------------------
+
+.c-card {
+    //
+}
+
+.c-card__media {
+    width: 100%;
+}
+
+.c-card__icon {
+    display: flex;
+    align-items: center;
+}
+
+// VARIANTS
+// ----------------------------------------------------
+
+// RESPONSIVE
+// ----------------------------------------------------
+
+@include media(screen, "<=small") {
+    //
+}
+
+@include media(screen, ">small", "<=medium") {
+    //
+}
+
+@include media(screen, ">medium", "<=large") {
+    //
+}

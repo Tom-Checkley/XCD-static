@@ -84,6 +84,12 @@
     }
 }
 
+.o-l--card-icons {
+    .o-l__item {
+        flex-grow: 1;
+    }
+}
+
 .o-l--breadcrumbs {
     .o-l__item {
         display: flex;

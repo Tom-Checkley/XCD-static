@@ -1,6 +1,6 @@
 <section class="o-s">
     <div class="o-w">
-        <div class="o-g o-g--2col">
+        <div class="o-g o-g--2col-equal">
             <div class="o-g__head">
                 <h2>Made for growing businesses</h2>
             </div>
@@ -19,12 +19,15 @@
                     </blockquote>
                 </div>
             </div>
-            <div class="o-g__actions">
-                {%- include partials/c-button.html -%}
-            </div>
             <div class="o-g__media">
-                <img src="http://pic.jcmserv3.net/400x400/ccc/fff.png&text=Test+Image" alt="">
+                <picture class="c-picture">
+                    <img class="c-picture__img" src="http://pic.jcmserv3.net/400x400/ccc/fff.png&text=Test+Image" alt="">
+                </picture>
             </div>
+            <div class="o-g__actions">
+                {%- include partials/components/c-button.html -%}
+            </div>
+            
         </div>
     </div>
 </section>

@@ -10,7 +10,6 @@
 /// VARIABLES
 /// ----------------------------------------------------
 
-$O_S-Padding:                   60px;
 
 /// BASE
 /// ----------------------------------------------------
@@ -41,7 +40,7 @@ main {
 
 .o-s {
     position: relative;
-    @include padding-y($O_S-Padding);
+    @include responsivePadding-y;
 }
 
 // Rather than a background image - we use a picture element
@@ -67,6 +66,11 @@ main {
     }
 }
 
+.o-s__title,
+.o-s__body {
+    text-align: center;
+}
+
 // VARIANTS
 // ----------------------------------------------------
 
@@ -77,10 +81,14 @@ main {
         position: relative;
         z-index: $Z-INDEX-Level1;
     }
+
+    // > .o-w {
+    //     padding-bottom: 0;
+    // }
 }
 
 .o-main {
-    @include padding-y($O_S-Padding * 0.6);
+    // @include padding-y($O_S-Padding * 0.6);
 }
 
 .o-s--header {
@@ -98,10 +106,15 @@ main {
     min-height: 100vh;
 }
 
+.o-s--products {
+    color: $COLOR-White;
+    background-color: lighten($COLOR-XCD-BlueDark, 5%);
+}
+
 .o-s--footer {
     background-color: hsl(212, 0%, 98%);
     border-top: 1px solid #eaf1f9;
-    @include padding-y($O_S-Padding);
+    // @include padding-y($O_S-Padding);
 }
 
 // .o-s--breadcrumbs {
@@ -127,6 +140,13 @@ main {
 .o-s--ztheme-darkblue {
     &::before {
         background: linear-gradient(to top right, rgba($COLOR-XCD-BlueDark, 0.95), rgba($COLOR-XCD-BlueDark, 0.95) 20%, rgba($COLOR-XCD-BlueDark, 0.2));
+        mix-blend-mode: multiply;
+    }
+}
+
+.o-s--ztheme-darkblue-radial {
+    &::before {
+        background: radial-gradient(rgba(lighten($COLOR-XCD-BlueDark, 20%), 0.5), rgba($COLOR-XCD-BlueDark, 0.9));
         mix-blend-mode: multiply;
     }
 }
