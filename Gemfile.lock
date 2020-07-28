@@ -35,7 +35,7 @@ GEM
       sass (~> 3.4)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.2.0)
+    json (2.3.0)
     kramdown (1.17.0)
     liquid (4.0.3)
     listen (3.1.5)
@@ -69,7 +69,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 3.8.5)
   jekyll-include-cache (~> 0.2.0)
-  json (~> 2.2.0)
+  json (~> 2.3.0)
   tzinfo
   tzinfo-data
 
